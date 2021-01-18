@@ -3,6 +3,9 @@
 
 CMakeFiles/cacti.dir/cacti.c.o: ../cacti.c
 CMakeFiles/cacti.dir/cacti.c.o: ../cacti.h
+CMakeFiles/cacti.dir/cacti.c.o: ../err.h
+CMakeFiles/cacti.dir/cacti.c.o: ../queue.h
+CMakeFiles/cacti.dir/cacti.c.o: ../threadpool.h
 
 CMakeFiles/cacti.dir/err.c.o: ../err.c
 CMakeFiles/cacti.dir/err.c.o: ../err.h

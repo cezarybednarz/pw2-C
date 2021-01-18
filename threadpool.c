@@ -2,6 +2,10 @@
 
 #define ERR -1
 
+/* ---- signal handling ---- */
+pthread_mutex_t pools_queue_mutex;
+struct queue *pools_queue;
+
 /* ---- sigaction handling ---- */
 void __attribute__((destructor)) destroy_signals() {
   pthread_mutex_destroy(&pools_queue_mutex);

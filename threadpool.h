@@ -15,9 +15,6 @@
 #include "err.h"
 #include "queue.h"
 
-/* ---- signal handling ---- */
-pthread_mutex_t pools_queue_mutex;
-struct queue *pools_queue;
 
 /* ---- threadpool ---- */
 typedef struct runnable {

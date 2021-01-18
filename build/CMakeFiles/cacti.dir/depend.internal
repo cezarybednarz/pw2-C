@@ -4,6 +4,9 @@
 CMakeFiles/cacti.dir/cacti.c.o
  /home/cezary/Studia/PW/pw2-C/cacti.c
  /home/cezary/Studia/PW/pw2-C/cacti.h
+ /home/cezary/Studia/PW/pw2-C/err.h
+ /home/cezary/Studia/PW/pw2-C/queue.h
+ /home/cezary/Studia/PW/pw2-C/threadpool.h
 CMakeFiles/cacti.dir/err.c.o
  /home/cezary/Studia/PW/pw2-C/err.c
  /home/cezary/Studia/PW/pw2-C/err.h

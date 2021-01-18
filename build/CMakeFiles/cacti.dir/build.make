@@ -89,22 +89,9 @@ CMakeFiles/cacti.dir/cacti.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cacti.dir/cacti.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/cacti.c -o CMakeFiles/cacti.dir/cacti.c.s
 
-CMakeFiles/cacti.dir/err.c.o: CMakeFiles/cacti.dir/flags.make
-CMakeFiles/cacti.dir/err.c.o: ../err.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cacti.dir/err.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cacti.dir/err.c.o -c /home/cezary/Studia/PW/pw2-C/err.c
-
-CMakeFiles/cacti.dir/err.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cacti.dir/err.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cezary/Studia/PW/pw2-C/err.c > CMakeFiles/cacti.dir/err.c.i
-
-CMakeFiles/cacti.dir/err.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cacti.dir/err.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/err.c -o CMakeFiles/cacti.dir/err.c.s
-
 CMakeFiles/cacti.dir/queue.c.o: CMakeFiles/cacti.dir/flags.make
 CMakeFiles/cacti.dir/queue.c.o: ../queue.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/cacti.dir/queue.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cacti.dir/queue.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cacti.dir/queue.c.o -c /home/cezary/Studia/PW/pw2-C/queue.c
 
 CMakeFiles/cacti.dir/queue.c.i: cmake_force
@@ -117,7 +104,7 @@ CMakeFiles/cacti.dir/queue.c.s: cmake_force
 
 CMakeFiles/cacti.dir/threadpool.c.o: CMakeFiles/cacti.dir/flags.make
 CMakeFiles/cacti.dir/threadpool.c.o: ../threadpool.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/cacti.dir/threadpool.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/cacti.dir/threadpool.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cacti.dir/threadpool.c.o -c /home/cezary/Studia/PW/pw2-C/threadpool.c
 
 CMakeFiles/cacti.dir/threadpool.c.i: cmake_force
@@ -128,20 +115,33 @@ CMakeFiles/cacti.dir/threadpool.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cacti.dir/threadpool.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/threadpool.c -o CMakeFiles/cacti.dir/threadpool.c.s
 
+CMakeFiles/cacti.dir/err.c.o: CMakeFiles/cacti.dir/flags.make
+CMakeFiles/cacti.dir/err.c.o: ../err.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/cacti.dir/err.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cacti.dir/err.c.o -c /home/cezary/Studia/PW/pw2-C/err.c
+
+CMakeFiles/cacti.dir/err.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cacti.dir/err.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cezary/Studia/PW/pw2-C/err.c > CMakeFiles/cacti.dir/err.c.i
+
+CMakeFiles/cacti.dir/err.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cacti.dir/err.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/err.c -o CMakeFiles/cacti.dir/err.c.s
+
 # Object files for target cacti
 cacti_OBJECTS = \
 "CMakeFiles/cacti.dir/cacti.c.o" \
-"CMakeFiles/cacti.dir/err.c.o" \
 "CMakeFiles/cacti.dir/queue.c.o" \
-"CMakeFiles/cacti.dir/threadpool.c.o"
+"CMakeFiles/cacti.dir/threadpool.c.o" \
+"CMakeFiles/cacti.dir/err.c.o"
 
 # External object files for target cacti
 cacti_EXTERNAL_OBJECTS =
 
 libcacti.a: CMakeFiles/cacti.dir/cacti.c.o
-libcacti.a: CMakeFiles/cacti.dir/err.c.o
 libcacti.a: CMakeFiles/cacti.dir/queue.c.o
 libcacti.a: CMakeFiles/cacti.dir/threadpool.c.o
+libcacti.a: CMakeFiles/cacti.dir/err.c.o
 libcacti.a: CMakeFiles/cacti.dir/build.make
 libcacti.a: CMakeFiles/cacti.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libcacti.a"

@@ -13,26 +13,10 @@ cacti.h
 /home/cezary/Studia/PW/pw2-C/cacti.h
 stddef.h
 -
-
-/home/cezary/Studia/PW/pw2-C/err.c
-stdio.h
--
-stdlib.h
--
-unistd.h
--
-stdarg.h
--
-errno.h
--
-sys/types.h
--
-sys/wait.h
--
-string.h
--
-err.h
-/home/cezary/Studia/PW/pw2-C/err.h
+threadpool.h
+/home/cezary/Studia/PW/pw2-C/threadpool.h
+queue.h
+/home/cezary/Studia/PW/pw2-C/queue.h
 
 /home/cezary/Studia/PW/pw2-C/err.h
 

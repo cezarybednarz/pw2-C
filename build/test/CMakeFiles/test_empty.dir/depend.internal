@@ -3,5 +3,8 @@
 
 test/CMakeFiles/test_empty.dir/test_empty.c.o
  ../cacti.h
+ ../err.h
+ ../queue.h
+ ../threadpool.h
  /home/cezary/Studia/PW/pw2-C/test/minunit.h
  /home/cezary/Studia/PW/pw2-C/test/test_empty.c
