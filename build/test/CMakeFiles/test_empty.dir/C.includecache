@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../cacti.h
+stddef.h
+-
+
+/home/cezary/Studia/PW/pw2-C/test/minunit.h
+
+/home/cezary/Studia/PW/pw2-C/test/test_empty.c
+minunit.h
+/home/cezary/Studia/PW/pw2-C/test/minunit.h
+cacti.h
+/home/cezary/Studia/PW/pw2-C/test/cacti.h
+stdbool.h
+-
+stdio.h
+-
+

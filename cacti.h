@@ -13,7 +13,7 @@ typedef long message_type_t;
 #define ACTOR_QUEUE_LIMIT 1024
 #endif
 
-#ifndef CAST_LIMIT
+#ifndef CAST_LIMIT 
 #define CAST_LIMIT 1048576
 #endif
 

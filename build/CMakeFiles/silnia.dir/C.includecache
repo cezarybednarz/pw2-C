@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cezary/Studia/PW/pw2-C/cacti.h
+stddef.h
+-
+
+/home/cezary/Studia/PW/pw2-C/silnia.c
+cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
+
