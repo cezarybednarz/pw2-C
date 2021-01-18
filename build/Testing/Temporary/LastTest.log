@@ -1,0 +1,20 @@
+Start testing: Jan 18 22:58 CET
+----------------------------------------------------------
+1/1 Testing: test_empty
+1/1 Test: test_empty
+Command: "/home/cezary/Studia/PW/pw2-C/build/test/test_empty"
+Directory: /home/cezary/Studia/PW/pw2-C/build/test
+"test_empty" start time: Jan 18 22:58 CET
+Output:
+----------------------------------------------------------
+/home/cezary/Studia/PW/pw2-C/test/test_empty.c: ALL TESTS PASSED
+/home/cezary/Studia/PW/pw2-C/test/test_empty.c: Tests run: 1
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_empty" end time: Jan 18 22:58 CET
+"test_empty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 18 22:58 CET

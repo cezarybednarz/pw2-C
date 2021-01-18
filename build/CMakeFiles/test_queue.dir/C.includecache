@@ -16,10 +16,6 @@ queue.h
 
 /home/cezary/Studia/PW/pw2-C/err.h
 
-/home/cezary/Studia/PW/pw2-C/macierz.c
-cacti.h
-/home/cezary/Studia/PW/pw2-C/cacti.h
-
 /home/cezary/Studia/PW/pw2-C/queue.h
 pthread.h
 -
@@ -41,6 +37,12 @@ err.h
 /home/cezary/Studia/PW/pw2-C/err.h
 threadpool.h
 /home/cezary/Studia/PW/pw2-C/threadpool.h
+
+/home/cezary/Studia/PW/pw2-C/test_queue.c
+cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
+stdio.h
+-
 
 /home/cezary/Studia/PW/pw2-C/threadpool.h
 pthread.h

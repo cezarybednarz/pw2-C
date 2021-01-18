@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/cezary/Studia/PW/pw2-C/cacti.c
-cacti.h
-/home/cezary/Studia/PW/pw2-C/cacti.h
-
-/home/cezary/Studia/PW/pw2-C/cacti.h
-stddef.h
--
-threadpool.h
-/home/cezary/Studia/PW/pw2-C/threadpool.h
-queue.h
-/home/cezary/Studia/PW/pw2-C/queue.h
-
 /home/cezary/Studia/PW/pw2-C/err.h
 
 /home/cezary/Studia/PW/pw2-C/queue.c
@@ -43,10 +31,6 @@ string.h
 -
 err.h
 /home/cezary/Studia/PW/pw2-C/err.h
-threadpool.h
-/home/cezary/Studia/PW/pw2-C/threadpool.h
-
-/home/cezary/Studia/PW/pw2-C/threadpool.c
 threadpool.h
 /home/cezary/Studia/PW/pw2-C/threadpool.h
 
