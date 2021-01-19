@@ -10,6 +10,12 @@ int actor_system_create(actor_id_t *actor, role_t *const role) {
   a_system->role = role;
   
   // init first actor
+  // todo:
+  // dodać globalny bufor cykliczny (thread safe)
+  // który będzie ogarniał schedulowanie pracy
+  //
+  // usunąć wszystkie synchronizacje, schedulowanie odbywa sie synchronicznie
+  // jedyne co odbywa się rónwolegle to wywoływanie funkcji (na thread poolu)
 
   return 0;
 }
