@@ -6,11 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/cezary/Studia/PW/pw2-C/err.h
-
-/home/cezary/Studia/PW/pw2-C/queue.c
+/home/cezary/Studia/PW/pw2-C/actor_system.h
+threadpool.h
+/home/cezary/Studia/PW/pw2-C/threadpool.h
+cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
 queue.h
 /home/cezary/Studia/PW/pw2-C/queue.h
+
+/home/cezary/Studia/PW/pw2-C/cacti.c
+cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
+
+/home/cezary/Studia/PW/pw2-C/cacti.h
+stddef.h
+-
+actor_system.h
+/home/cezary/Studia/PW/pw2-C/actor_system.h
+
+/home/cezary/Studia/PW/pw2-C/err.h
 
 /home/cezary/Studia/PW/pw2-C/queue.h
 pthread.h

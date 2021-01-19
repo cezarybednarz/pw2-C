@@ -48,14 +48,14 @@ static void *thread_loop(void *pool) {
   thread_pool_t *p = (thread_pool_t*)pool;
   runnable_t *todo;
 
-  while(true) {
+  while (true) {
     pthread_mutex_lock(&(p->mutex));
 
-    while(!p->destroyed && p->defer_queue->length == 0) {
+    while (!p->destroyed && p->defer_queue->length == 0) {
       pthread_cond_wait(&(p->condition), &(p->mutex));
     }
 
-    if(p->destroyed && p->defer_queue->length == 0) {
+    if (p->destroyed && p->defer_queue->length == 0) {
       break;
     }
 
@@ -73,19 +73,19 @@ static void *thread_loop(void *pool) {
 /* ---- thread pool ---- */
 int thread_pool_init(thread_pool_t *pool, size_t num_threads) {
 
-  if(pool == NULL) {
+  if (pool == NULL) {
     return ERR;
   }
 
 
   /* initialising global list of thread_pools and changing default behaviour to SIGINT */
-  if(pthread_mutex_lock(&pools_queue_mutex) != 0) {
+  if (pthread_mutex_lock(&pools_queue_mutex) != 0) {
     return ERR;
   }
 
   queue_push(pools_queue, (void*)pool);
 
-  if(pthread_mutex_unlock(&pools_queue_mutex) != 0) {
+  if (pthread_mutex_unlock(&pools_queue_mutex) != 0) {
     return ERR;
   }
 
@@ -93,22 +93,22 @@ int thread_pool_init(thread_pool_t *pool, size_t num_threads) {
   pool->num_threads = 0;
   pool->destroyed = false;
 
-  if((pool->threads = (pthread_t*)malloc(num_threads * sizeof(pthread_t))) == NULL) {
+  if ((pool->threads = (pthread_t*)malloc(num_threads * sizeof(pthread_t))) == NULL) {
     return ERR;
   }
 
-  if((pool->defer_queue = new_queue()) == NULL) {
+  if ((pool->defer_queue = new_queue()) == NULL) {
     free(pool->threads);
     return ERR;
   }
 
-  if(pthread_mutex_init(&(pool->mutex), NULL) != 0) {
+  if (pthread_mutex_init(&(pool->mutex), NULL) != 0) {
     free(pool->threads);
     queue_destroy(pool->defer_queue);
     return ERR;
   }
 
-  if(pthread_cond_init(&(pool->condition), NULL) != 0) {
+  if (pthread_cond_init(&(pool->condition), NULL) != 0) {
     free(pool->threads);
     queue_destroy(pool->defer_queue);
     if(pthread_mutex_destroy(&(pool->mutex)) != 0) {
@@ -117,8 +117,8 @@ int thread_pool_init(thread_pool_t *pool, size_t num_threads) {
     return ERR;
   }
 
-  for(size_t i = 0; i < num_threads; i++) {
-    if(pthread_create(&(pool->threads[i]), NULL, thread_loop, (void*)pool) != 0) {
+  for (size_t i = 0; i < num_threads; i++) {
+    if (pthread_create(&(pool->threads[i]), NULL, thread_loop, (void*)pool) != 0) {
       thread_pool_destroy(pool);
       return ERR;
     }
@@ -129,32 +129,32 @@ int thread_pool_init(thread_pool_t *pool, size_t num_threads) {
 }
 
 void thread_pool_destroy(struct thread_pool *pool) {
-  if(pool == NULL) {
+  if (pool == NULL) {
     exit(ERR);
   }
 
-  if(pthread_mutex_lock(&(pool->mutex)) != 0) {
+  if (pthread_mutex_lock(&(pool->mutex)) != 0) {
     exit(ERR);
   }
 
-  if(pool->destroyed) {
+  if (pool->destroyed) {
     return;
   }
 
   pool->destroyed = true;
 
-  if(pthread_cond_broadcast(&(pool->condition)) != 0 ||
+  if (pthread_cond_broadcast(&(pool->condition)) != 0 ||
      pthread_mutex_unlock(&(pool->mutex)) != 0) {
     exit(ERR);
   }
 
-  for(size_t i = 0; i < pool->num_threads; i++) {
+  for (size_t i = 0; i < pool->num_threads; i++) {
     if(pthread_join(pool->threads[i], NULL) != 0) {
       exit(ERR);
     }
   }
 
-  if(pool->num_threads_started > 0) {
+  if (pool->num_threads_started > 0) {
     exit(ERR);
   }
 
@@ -168,14 +168,14 @@ void thread_pool_destroy(struct thread_pool *pool) {
 
 int defer(struct thread_pool *pool, runnable_t runnable) {
 
-  if(pool == NULL) {
+  if (pool == NULL) {
     return ERR;
   }
 
-  if(pthread_mutex_lock(&(pool->mutex)) != 0) {
+  if (pthread_mutex_lock(&(pool->mutex)) != 0) {
     return ERR;
   }
-  if(pool->destroyed) {
+  if (pool->destroyed) {
     if(pthread_mutex_unlock(&(pool->mutex)) != 0) {
       return ERR;
     }

@@ -8,8 +8,7 @@ int tests_run = 0;
 
 static char *empty()
 {
-	mu_assert("empty", true);
-	return 0;
+    mu_assert("empty", true);
 }
 
 static char *all_tests()
