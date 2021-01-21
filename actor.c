@@ -35,6 +35,8 @@ int actor_push_message(actor_t* actor, message_t* message) {
   if (pthread_mutex_lock(actor->lock) != 0) {
     return -1;
   }
+
+  // todo handle actor death
   
   if (queue_push(actor->message_queue, message) != 0) {
     return -1;
@@ -95,6 +97,7 @@ int actor_process_message(actor_t* actor) {
 
       break;
     case MSG_GODIE:
+      printf("MSG_GODIE not handled yet\n");
       // todo
       break;  
     case MSG_HELLO:
@@ -103,7 +106,7 @@ int actor_process_message(actor_t* actor) {
       printf("actor %d received MSG_HELLO from actor %d\n", actor->id, parent_actor);
       
       // todo zweryfikowac
-      actor->role->prompts[0](NULL, 0, NULL);
+      //actor->role->prompts[0](NULL, 0, NULL);
 
       break;
     default:
@@ -111,7 +114,9 @@ int actor_process_message(actor_t* actor) {
         syserr("Wrong message type");
         return -1;
       }  
+
       // todo
+      printf("Other messages are currently not handled properly\n");
   }
 
 

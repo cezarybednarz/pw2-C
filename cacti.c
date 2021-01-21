@@ -29,8 +29,19 @@ void actor_system_join(actor_id_t actor) {
   // todo
 }
 
-int send_message(actor_id_t actor, message_t message) {
-  // todo
+int send_message(actor_id_t actor_id, message_t message) {
+  actor_t* actor = actor_system_find(a_system, actor_id);
+  
+  // no actor with that id in system
+  if (actor == NULL) {
+    return -2; 
+  }
+
+  if (actor_push_message(actor, &message) != 0) {
+    return -1;
+  }
+
+  return 0;
 }
 
 

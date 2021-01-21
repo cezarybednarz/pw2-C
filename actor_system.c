@@ -29,14 +29,26 @@ void actor_system_destroy(actor_system_t* actor_system) {
 }
 
 actor_t* actor_system_find(actor_system_t* a_system, actor_id_t id) {
+  if (pthread_mutex_lock(a_system->lock) != 0) {
+    return -1;
+  }
 
+  actor_t* ret;
+  
   actor_t** data = (actor_t**)a_system->actors->data_array;
   for (size_t i = 0; i < a_system->actors->length; i++) {
     if (data[i]->id == id) {
-      return data[i];
+      ret = data[i];
+      if (pthread_mutex_unlock(a_system->lock) != 0) {
+        return -1;
+      }
+      return ret;
     }
   }
 
+  if (pthread_mutex_unlock(a_system->lock) != 0) {
+    return -1;
+  }
   return NULL;
 }
 
