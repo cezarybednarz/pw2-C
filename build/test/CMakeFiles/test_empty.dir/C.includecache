@@ -6,13 +6,25 @@
 
 #IncludeRegexTransform: 
 
+../actor.h
+cacti.h
+../cacti.h
+queue.h
+../queue.h
+
+../actor_system.h
+cacti.h
+../cacti.h
+
 ../cacti.h
 stddef.h
 -
 threadpool.h
 ../threadpool.h
-queue.h
-../queue.h
+actor_system.h
+../actor_system.h
+actor.h
+../actor.h
 
 ../err.h
 

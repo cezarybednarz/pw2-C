@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/cezary/Studia/PW/pw2-C/actor.c" "/home/cezary/Studia/PW/pw2-C/build/CMakeFiles/cacti.dir/actor.c.o"
+  "/home/cezary/Studia/PW/pw2-C/actor_system.c" "/home/cezary/Studia/PW/pw2-C/build/CMakeFiles/cacti.dir/actor_system.c.o"
   "/home/cezary/Studia/PW/pw2-C/cacti.c" "/home/cezary/Studia/PW/pw2-C/build/CMakeFiles/cacti.dir/cacti.c.o"
   "/home/cezary/Studia/PW/pw2-C/err.c" "/home/cezary/Studia/PW/pw2-C/build/CMakeFiles/cacti.dir/err.c.o"
   "/home/cezary/Studia/PW/pw2-C/queue.c" "/home/cezary/Studia/PW/pw2-C/build/CMakeFiles/cacti.dir/queue.c.o"

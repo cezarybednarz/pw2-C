@@ -109,17 +109,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/var/lib/snapd/snap/cmake/769/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -153,6 +142,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/var/lib/snapd/snap/cmake/769/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -226,19 +226,6 @@ cacti/fast:
 .PHONY : cacti/fast
 
 #=============================================================================
-# Target rules for targets named test_queue
-
-# Build rule for target.
-test_queue: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_queue
-.PHONY : test_queue
-
-# fast build rule for target.
-test_queue/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_queue.dir/build.make CMakeFiles/test_queue.dir/build
-.PHONY : test_queue/fast
-
-#=============================================================================
 # Target rules for targets named test_empty
 
 # Build rule for target.
@@ -250,6 +237,60 @@ test_empty: cmake_check_build_system
 test_empty/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/build
 .PHONY : test_empty/fast
+
+actor.o: actor.c.o
+
+.PHONY : actor.o
+
+# target to build an object file
+actor.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/actor.c.o
+.PHONY : actor.c.o
+
+actor.i: actor.c.i
+
+.PHONY : actor.i
+
+# target to preprocess a source file
+actor.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/actor.c.i
+.PHONY : actor.c.i
+
+actor.s: actor.c.s
+
+.PHONY : actor.s
+
+# target to generate assembly for a file
+actor.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/actor.c.s
+.PHONY : actor.c.s
+
+actor_system.o: actor_system.c.o
+
+.PHONY : actor_system.o
+
+# target to build an object file
+actor_system.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/actor_system.c.o
+.PHONY : actor_system.c.o
+
+actor_system.i: actor_system.c.i
+
+.PHONY : actor_system.i
+
+# target to preprocess a source file
+actor_system.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/actor_system.c.i
+.PHONY : actor_system.c.i
+
+actor_system.s: actor_system.c.s
+
+.PHONY : actor_system.s
+
+# target to generate assembly for a file
+actor_system.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/actor_system.c.s
+.PHONY : actor_system.c.s
 
 cacti.o: cacti.c.o
 
@@ -386,33 +427,6 @@ silnia.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/silnia.c.s
 .PHONY : silnia.c.s
 
-test_queue.o: test_queue.c.o
-
-.PHONY : test_queue.o
-
-# target to build an object file
-test_queue.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_queue.dir/build.make CMakeFiles/test_queue.dir/test_queue.c.o
-.PHONY : test_queue.c.o
-
-test_queue.i: test_queue.c.i
-
-.PHONY : test_queue.i
-
-# target to preprocess a source file
-test_queue.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_queue.dir/build.make CMakeFiles/test_queue.dir/test_queue.c.i
-.PHONY : test_queue.c.i
-
-test_queue.s: test_queue.c.s
-
-.PHONY : test_queue.s
-
-# target to generate assembly for a file
-test_queue.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_queue.dir/build.make CMakeFiles/test_queue.dir/test_queue.c.s
-.PHONY : test_queue.c.s
-
 threadpool.o: threadpool.c.o
 
 .PHONY : threadpool.o
@@ -457,7 +471,12 @@ help:
 	@echo "... macierz"
 	@echo "... silnia"
 	@echo "... test_empty"
-	@echo "... test_queue"
+	@echo "... actor.o"
+	@echo "... actor.i"
+	@echo "... actor.s"
+	@echo "... actor_system.o"
+	@echo "... actor_system.i"
+	@echo "... actor_system.s"
 	@echo "... cacti.o"
 	@echo "... cacti.i"
 	@echo "... cacti.s"
@@ -473,9 +492,6 @@ help:
 	@echo "... silnia.o"
 	@echo "... silnia.i"
 	@echo "... silnia.s"
-	@echo "... test_queue.o"
-	@echo "... test_queue.i"
-	@echo "... test_queue.s"
 	@echo "... threadpool.o"
 	@echo "... threadpool.i"
 	@echo "... threadpool.s"

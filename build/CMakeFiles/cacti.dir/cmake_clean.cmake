@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/cacti.dir/actor.c.o"
+  "CMakeFiles/cacti.dir/actor_system.c.o"
   "CMakeFiles/cacti.dir/cacti.c.o"
   "CMakeFiles/cacti.dir/err.c.o"
   "CMakeFiles/cacti.dir/queue.c.o"
