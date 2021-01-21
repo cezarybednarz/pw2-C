@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/cezary/Studia/PW/pw2-C/actor.c
+actor.h
+/home/cezary/Studia/PW/pw2-C/actor.h
+
 /home/cezary/Studia/PW/pw2-C/actor.h
 cacti.h
 /home/cezary/Studia/PW/pw2-C/cacti.h
@@ -17,6 +21,10 @@ actor_system.h
 /home/cezary/Studia/PW/pw2-C/actor_system.h
 
 /home/cezary/Studia/PW/pw2-C/actor_system.h
+cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
+
+/home/cezary/Studia/PW/pw2-C/cacti.c
 cacti.h
 /home/cezary/Studia/PW/pw2-C/cacti.h
 
