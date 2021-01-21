@@ -9,23 +9,25 @@ typedef struct actor
 {
   actor_id_t id;
 
+  actor_system_t* a_system;
   thread_pool_t* pool;
   role_t* role;
 
-  pthread_mutex_t* queue_lock;
+  pthread_mutex_t* lock;
+
   queue_t* message_queue;
-
-  pthread_mutex_t* currently_working_lock;
-
-
+  bool scheduled;
+  bool dead;
 
 } actor_t;
 
-int actor_init(actor_t* actor, thread_pool_t* pool, role_t* role);
+int actor_init(actor_t* actor, thread_pool_t* pool, role_t* role, actor_system_t* a_system);
 
 void actor_destroy(actor_t* actor);
 
-int actor_receive_message(actor_t* actor, message_t* message);
+int actor_process_message(actor_t* actor);
+
+int actor_push_message(actor_t* actor, message_t* message);
 
 
 #endif // ACTOR_H

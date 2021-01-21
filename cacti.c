@@ -7,25 +7,30 @@ int actor_system_create(actor_id_t *actor, role_t *const role) {
     return -1;
   }
 
-  a_system->role = role;
-  
-  // init first actor
-  // todo:
-  // dodać globalny bufor cykliczny (thread safe)
-  // który będzie ogarniał schedulowanie pracy
-  //
-  // usunąć wszystkie synchronizacje, schedulowanie odbywa sie synchronicznie
-  // jedyne co odbywa się rónwolegle to wywoływanie funkcji (na thread poolu)
+  actor_t* first_actor = malloc(sizeof(actor_t));
+  if (first_actor == NULL) {
+    return -1;
+  }
+
+  if (actor_init(first_actor, a_system->pool, role, a_system) != 0) {
+    return -1;
+  }
+
+  if (actor_system_insert(a_system, first_actor) != 0) {
+    return -1;
+  }
+
+  *actor = 0;
 
   return 0;
 }
 
 void actor_system_join(actor_id_t actor) {
-
+  // todo
 }
 
 int send_message(actor_id_t actor, message_t message) {
-
+  // todo
 }
 
 
