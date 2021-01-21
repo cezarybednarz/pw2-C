@@ -29,6 +29,8 @@ actor.h
 /home/cezary/Studia/PW/pw2-C/err.h
 
 /home/cezary/Studia/PW/pw2-C/macierz.c
+unistd.h
+-
 cacti.h
 /home/cezary/Studia/PW/pw2-C/cacti.h
 
