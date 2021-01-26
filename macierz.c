@@ -56,21 +56,25 @@ bool test_spawn() {
 	message.data = role;
 	message.nbytes = sizeof(role_t*);
 
-	send_message(first, message);
+	printf("sending message MSG_SPAWN to actor with id = %d\n", (int)first);
+	res = send_message(first, message);
+  if (res != 0) {
+    printf("error in send_message: %d\n", res);
+    return false;
+  }
 
 	// todo no message on screen
-
 
 	return true;
 }
 
 int main() {
-	if (!test_thread_pool_empty()) {
-		printf("Error in test_thread_pool_empty\n");
-	}
-	if (!test_thread_pool_basic()) {
-		printf("Error in test_thread_pool_basic\n");
-	}
+//	if (!test_thread_pool_empty()) {
+//		printf("Error in test_thread_pool_empty\n");
+//	}
+//	if (!test_thread_pool_basic()) {
+//		printf("Error in test_thread_pool_basic\n");
+//	}
 	if (!test_spawn()) {
 		printf("Error in test_spawn\n");
 	}

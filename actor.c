@@ -51,7 +51,7 @@ int actor_push_message(actor_t* actor, message_t* message) {
     runnable.arg = actor;
     runnable.argsz = sizeof(actor_t*);
     runnable.function = (void (*)(void *, size_t))&actor_process_message;
-    defer(actor->pool, (runnable_t) runnable);
+    defer(actor->pool, runnable);
   }
 
   if (pthread_mutex_unlock(&(actor->lock))) {
@@ -95,7 +95,9 @@ void handle_hello(actor_t* actor, message_t* message) {
 }
 
 // pulls and executes one message from message queue for scheduled actor
-void actor_process_message(actor_t* actor, __attribute__ ((unused)) size_t argsz) {
+void actor_process_message(actor_t* actor, size_t argsz) {
+
+  printf("starting processing message for actor %d\n", (int)actor->id);
 
   if (pthread_mutex_lock(&(actor->lock)) != 0) {
     return;
@@ -107,6 +109,8 @@ void actor_process_message(actor_t* actor, __attribute__ ((unused)) size_t argsz
   }
 
   message_t* message = (message_t*)queue_pop(actor->message_queue);
+
+  printf("popped message: %d\n", (int)message->message_type);
 
   if (pthread_mutex_unlock(&(actor->lock))) {
     return;
