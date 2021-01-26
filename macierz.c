@@ -1,19 +1,77 @@
+#include <unistd.h> // todo potencjalnie usunac
 #include "cacti.h"
 
-int main() {
-	actor_id_t first;
-	role_t role;
-	role.nprompts = 0;
+bool test_thread_pool_empty() {
+	thread_pool_t* pool = malloc(sizeof(thread_pool_t));
+	thread_pool_init(pool, 3);
+	thread_pool_destroy(pool);
+	free(pool);
 
-	int res = actor_system_create(&first, &role);
+	return true;
+}
+
+void counter(int* size, size_t argsz) {
+	printf("argsz = %d\n", (int)argsz);
+	for (int i = 0; i < *size; i++) {
+		printf(" [%d]\n", i);
+		usleep((rand() % 3)*1000);
+	}
+	printf("finished\n");
+}
+
+bool test_thread_pool_basic() {
+	thread_pool_t* pool = malloc(sizeof(thread_pool_t));
+	thread_pool_init(pool, 3);
+
+	int x = 10;
+	runnable_t runnable;
+	runnable.arg = (int*)&x;
+	runnable.argsz = sizeof(int);
+	runnable.function = (void (*)(void *, size_t))&counter;
+
+	defer(pool, runnable);
+	defer(pool, runnable);
+	defer(pool, runnable);
+	defer(pool, runnable);
+
+	thread_pool_destroy(pool);
+	free(pool);
+
+	return true;
+}
+
+bool test_spawn() {
+	actor_id_t first;
+	role_t* role = malloc(sizeof(role_t));
+	role->nprompts = 0;
+
+	int res = actor_system_create(&first, role);
 	if (res == -1) {
-		printf("Error in actor_system_create");
+		printf("actor_system_create failed\n");
+		return false;
 	}
 
 	message_t message;
 	message.message_type = MSG_SPAWN;
-	message.data = &role;
+	message.data = role;
 	message.nbytes = sizeof(role_t*);
 
 	send_message(first, message);
+
+	// todo no message on screen
+
+
+	return true;
+}
+
+int main() {
+	if (!test_thread_pool_empty()) {
+		printf("Error in test_thread_pool_empty\n");
+	}
+	if (!test_thread_pool_basic()) {
+		printf("Error in test_thread_pool_basic\n");
+	}
+	if (!test_spawn()) {
+		printf("Error in test_spawn\n");
+	}
 }

@@ -1,14 +1,17 @@
 #ifndef ACTOR_SYSTEM_H
 #define ACTOR_SYSTEM_H
 
-#include "threadpool.h"
 #include "cacti.h"
-#include "queue.h"
-#include "actor.h"
+
+typedef long actor_id_t;
+typedef struct thread_pool thread_pool_t;
+typedef struct role role_t;
+typedef struct message message_t;
+typedef struct actor actor_t;
 
 typedef struct actor_system 
 {
-  pthread_mutex_t* lock;
+  pthread_mutex_t lock;
 
   thread_pool_t* pool;
   queue_t* actors;

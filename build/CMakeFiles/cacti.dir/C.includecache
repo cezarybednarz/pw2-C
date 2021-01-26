@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/cezary/Studia/PW/pw2-C/actor.c
+actor.h
+/home/cezary/Studia/PW/pw2-C/actor.h
+
 /home/cezary/Studia/PW/pw2-C/actor.h
 cacti.h
 /home/cezary/Studia/PW/pw2-C/cacti.h

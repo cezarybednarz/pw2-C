@@ -1,17 +1,19 @@
 #include "actor.h"
 
 int actor_init(actor_t* actor, thread_pool_t* pool, role_t *role, actor_system_t* a_system) {
-  actor = (actor_t*)malloc(sizeof(actor));
   if (actor == NULL) {
+    fprintf(stderr, "malloc of actor_t\n");
     return -1;
   }
 
-  if (pthread_mutex_init(actor->lock, NULL) != 0) {
+  if (pthread_mutex_init(&(actor->lock), NULL) != 0) {
+    fprintf(stderr, "pthread_mutex_init actor->lock\n");
     return -1;
   }
 
   actor->message_queue = new_queue();
   if (actor->message_queue == NULL) {
+    fprintf(stderr, "new_queue\n");
     return -1;
   }
 
@@ -25,19 +27,19 @@ int actor_init(actor_t* actor, thread_pool_t* pool, role_t *role, actor_system_t
 }
 
 void actor_destroy(actor_t* actor) {
-  pthread_mutex_destroy(actor->lock);
+  pthread_mutex_destroy(&(actor->lock));
   queue_destroy(actor->message_queue);
   free(actor);
 }
 
 // push message to queue and schedule actor
 int actor_push_message(actor_t* actor, message_t* message) {
-  if (pthread_mutex_lock(actor->lock) != 0) {
+  if (pthread_mutex_lock(&(actor->lock)) != 0) {
     return -1;
   }
 
   // todo handle actor death
-  
+
   if (queue_push(actor->message_queue, message) != 0) {
     return -1;
   }
@@ -48,71 +50,83 @@ int actor_push_message(actor_t* actor, message_t* message) {
     runnable_t runnable;
     runnable.arg = actor;
     runnable.argsz = sizeof(actor_t*);
-    runnable.function = actor_process_message;
-    defer(actor->pool, runnable);
+    runnable.function = (void (*)(void *, size_t))&actor_process_message;
+    defer(actor->pool, (runnable_t) runnable);
   }
 
-  if (pthread_mutex_unlock(actor->lock)) {
+  if (pthread_mutex_unlock(&(actor->lock))) {
     return -1;
+  }
+  return 0;
+}
+
+void handle_spawn(actor_t* actor, message_t* message) {
+
+  actor_t* new_actor = malloc(sizeof(actor_t));
+  if (new_actor == NULL) {
+    return;
+  }
+  if (actor_init(new_actor, actor->pool, message->data, actor->a_system) != 0) {
+    return;
+  }
+
+  actor_system_insert(actor->a_system, new_actor);
+
+  message_t hello_message;
+  hello_message.message_type = MSG_HELLO;
+  hello_message.data = (actor_id_t*)&actor->id;
+  hello_message.nbytes = sizeof(actor_id_t);
+  if (send_message(new_actor->id, hello_message) != 0) {
+    return;
   }
 }
 
-// pulls and executes one message from message queue for scheduled actor
-int actor_process_message(actor_t* actor) {
+void handle_godie( __attribute__ ((unused)) actor_t* actor,  __attribute__ ((unused)) message_t* message) {
+  printf("MSG_GODIE not handled yet");
+  
+  // todo
+}
 
-  if (pthread_mutex_lock(actor->lock) != 0) {
-    return -1;
+void handle_hello(actor_t* actor, message_t* message) {
+  actor_id_t parent_actor = (actor_id_t)message->data;
+  printf("actor %d received MSG_HELLO from actor %d\n", (int)actor->id, (int)parent_actor);
+  // todo zweryfikowac
+  //actor->role->prompts[0](NULL, 0, NULL);
+}
+
+// pulls and executes one message from message queue for scheduled actor
+void actor_process_message(actor_t* actor, __attribute__ ((unused)) size_t argsz) {
+
+  if (pthread_mutex_lock(&(actor->lock)) != 0) {
+    return;
   }
 
   if (!actor->scheduled) {
     syserr("actor is currently not scheduled");
-    return -1;
+    return;
   }
 
-  message_t* message = (message_t*)queue_pull(actor->message_queue, message);
+  message_t* message = (message_t*)queue_pop(actor->message_queue);
 
-  if (pthread_mutex_unlock(actor->lock)) {
-    return -1;
+  if (pthread_mutex_unlock(&(actor->lock))) {
+    return;
   }
 
   switch (message->message_type) {
     case MSG_SPAWN:
-      actor_t* new_actor = malloc(sizeof(actor_t));
-      if (new_actor == NULL) {
-        return -1;
-      }
-      if (actor_init(new_actor, actor->pool, message->data, actor->a_system) != 0) {
-        return -1;
-      }
-
-      actor_system_insert(actor->a_system, new_actor);
-
-      message_t* hello_message;
-      hello_message->message_type = MSG_HELLO;
-      hello_message->data = actor->id;
-      hello_message->nbytes = sizeof(actor_id_t);
-      if (actor_push_message(new_actor, hello_message) != 0) {
-        return -1;
-      }
-
+      handle_spawn(actor, message);
       break;
     case MSG_GODIE:
-      printf("MSG_GODIE not handled yet\n");
-      // todo
-      break;  
+      handle_godie(actor, message);
+      break;
     case MSG_HELLO:
-      actor_id_t parent_actor = (actor_id_t)message->data;
-
-      printf("actor %d received MSG_HELLO from actor %d\n", actor->id, parent_actor);
-      
-      // todo zweryfikowac
-      //actor->role->prompts[0](NULL, 0, NULL);
-
+      handle_hello(actor, message);
       break;
     default:
-      if (message->message_type >= actor->role->nprompts) {
+
+      if (message->message_type < 0 || (size_t)message->message_type >= actor->role->nprompts) {
         syserr("Wrong message type");
-        return -1;
+        return;
       }  
 
       // todo
@@ -120,6 +134,6 @@ int actor_process_message(actor_t* actor) {
   }
 
 
-  return 0;
+  return;
 }
 

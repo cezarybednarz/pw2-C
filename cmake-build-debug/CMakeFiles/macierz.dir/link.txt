@@ -1,0 +1,1 @@
+/usr/bin/cc -g -Wall -Wextra -pthread -g  -rdynamic CMakeFiles/macierz.dir/macierz.c.o  -o macierz  libcacti.a 

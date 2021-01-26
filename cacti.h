@@ -2,7 +2,9 @@
 #define CACTI_H
 
 #include <stddef.h>
+#include "threadpool.h"
 #include "actor_system.h"
+#include "actor.h"
 
 typedef long message_type_t;
 
