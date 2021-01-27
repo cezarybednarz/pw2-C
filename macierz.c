@@ -55,7 +55,6 @@ bool test_spawn() {
 	message.data = role;
 	message.nbytes = sizeof(role_t*);
 
-	printf("sending message MSG_SPAWN to actor with id = %d\n", (int)first);
 	res = send_message(first, message);
   if (res != 0) {
     printf("error in send_message: %d\n", res);

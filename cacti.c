@@ -36,8 +36,6 @@ void actor_system_join(actor_id_t actor) {
 
 int send_message(actor_id_t actor_id, message_t message) {
   actor_t* actor = actor_system_find(&a_system, actor_id);
-
-  printf("send_message: actor_id = %ld, message->message_type = %ld\n", actor_id, message.message_type);
   
   // no actor with that id in system
   if (actor == NULL) {
@@ -52,14 +50,6 @@ int send_message(actor_id_t actor_id, message_t message) {
   if (actor_push_message(actor, message_copy) != 0) {
     return -1;
   }
-  printf("send_message: sent!\n");
-
-  printf("send_message: messages on queue for actor %ld:\n", actor->id);
-  for (size_t i = 0; i < actor->message_queue->front; i++) {
-    message_t* m = (message_t*)actor->message_queue->data_array[i];
-    printf("[%ld] ", m->message_type);
-  }
-  printf("\n");
 
   return 0;
 }
