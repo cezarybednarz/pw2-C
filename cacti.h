@@ -10,7 +10,7 @@ typedef long message_type_t;
 
 #define MSG_SPAWN (message_type_t)0x06057a6e
 #define MSG_GODIE (message_type_t)0x60bedead
-#define MSG_HELLO (message_type_t)0x0
+#define MSG_HELLO (message_type_t)0x0 // todo zmienic
 
 #ifndef ACTOR_QUEUE_LIMIT
 #define ACTOR_QUEUE_LIMIT 1024

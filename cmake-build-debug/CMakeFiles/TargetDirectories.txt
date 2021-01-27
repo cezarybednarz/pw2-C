@@ -1,3 +1,4 @@
+/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/install/local.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/test_queue.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/macierz.dir
@@ -7,8 +8,8 @@
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/install/strip.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/list_install_components.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/silnia.dir
+/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/test_actor.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/install.dir
-/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/install/local.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/test/CMakeFiles/install.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/test/CMakeFiles/list_install_components.dir
 /home/cezary/Studia/PW/pw2-C/cmake-build-debug/test/CMakeFiles/install/strip.dir

@@ -67,6 +67,8 @@ int actor_push_message(actor_t* actor, message_t* message) {
     defer(actor->pool, runnable);
   }
 
+  printf("actor_push_message: actor = %lu\n", (size_t)actor);
+  printf("actor_push_message: actor->message_queue = %lu\n", (size_t)actor->message_queue);
   printf("actor_push_message: messages on queue for actor %ld (after defer):\n", actor->id);
   for (size_t i = 0; i < actor->message_queue->front; i++) {
     message_t* m = (message_t*)actor->message_queue->data_array[i];
@@ -127,6 +129,10 @@ void actor_process_message(actor_t* actor, size_t argsz) {
     return;
   }
 
+  printf("actor_process_message: actor = %lu\n", (size_t)actor);
+  printf("actor_process_message: actor->message_queue = %lu\n", (size_t)actor->message_queue);
+  printf("actor_process_message: after lock\n");
+
   printf("actor_process_message: messages on queue for actor %ld:\n", actor->id);
   for (size_t i = 0; i < actor->message_queue->front; i++) {
     message_t* m = (message_t*)actor->message_queue->data_array[i];
@@ -142,7 +148,9 @@ void actor_process_message(actor_t* actor, size_t argsz) {
     return;
   }
 
-  message_t message = *(message_t*)queue_pop(actor->message_queue);
+  printf("actor_process_message: actor->message_queue->length %lu\n", actor->message_queue->length);
+
+  message_t message = *((message_t*)queue_pop(actor->message_queue));
 
   printf("actor_process_message: actor_id = %ld, message_type = %ld\n", actor->id, message.message_type);
   printf("actor_process_message: unlocking mutex\n");

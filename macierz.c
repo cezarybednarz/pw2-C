@@ -46,7 +46,7 @@ bool test_spawn() {
 	role->nprompts = 0;
 
 	int res = actor_system_create(&first, role);
-	if (res == -1) {
+	if (res != 0) {
 		printf("actor_system_create failed\n");
 		return false;
 	}
@@ -69,7 +69,7 @@ bool test_spawn() {
 }
 
 int main() {
-  sleep(1);
+   //sleep(1);
 /*	if (!test_thread_pool_empty()) {
 		printf("Error in test_thread_pool_empty\n");
 	}

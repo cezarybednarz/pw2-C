@@ -77,6 +77,7 @@ all: CMakeFiles/test_queue.dir/all
 all: CMakeFiles/macierz.dir/all
 all: CMakeFiles/cacti.dir/all
 all: CMakeFiles/silnia.dir/all
+all: CMakeFiles/test_actor.dir/all
 all: test/all
 
 .PHONY : all
@@ -91,6 +92,7 @@ clean: CMakeFiles/test_queue.dir/clean
 clean: CMakeFiles/macierz.dir/clean
 clean: CMakeFiles/cacti.dir/clean
 clean: CMakeFiles/silnia.dir/clean
+clean: CMakeFiles/test_actor.dir/clean
 clean: test/clean
 
 .PHONY : clean
@@ -120,7 +122,7 @@ test/clean: test/CMakeFiles/test_empty.dir/clean
 CMakeFiles/test_queue.dir/all: CMakeFiles/cacti.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_queue.dir/build.make CMakeFiles/test_queue.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_queue.dir/build.make CMakeFiles/test_queue.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=14,15 "Built target test_queue"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=16,17 "Built target test_queue"
 .PHONY : CMakeFiles/test_queue.dir/all
 
 # Build rule for subdir invocation for target.
@@ -222,13 +224,40 @@ CMakeFiles/silnia.dir/clean:
 .PHONY : CMakeFiles/silnia.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_actor.dir
+
+# All Build rule for target.
+CMakeFiles/test_actor.dir/all: CMakeFiles/cacti.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=12,13 "Built target test_actor"
+.PHONY : CMakeFiles/test_actor.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_actor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_actor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/test_actor.dir/rule
+
+# Convenience name for target.
+test_actor: CMakeFiles/test_actor.dir/rule
+
+.PHONY : test_actor
+
+# clean rule for target.
+CMakeFiles/test_actor.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/clean
+.PHONY : CMakeFiles/test_actor.dir/clean
+
+#=============================================================================
 # Target rules for target test/CMakeFiles/test_empty.dir
 
 # All Build rule for target.
 test/CMakeFiles/test_empty.dir/all: CMakeFiles/cacti.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=12,13 "Built target test_empty"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=14,15 "Built target test_empty"
 .PHONY : test/CMakeFiles/test_empty.dir/all
 
 # Build rule for subdir invocation for target.

@@ -19,6 +19,7 @@ add_library(cacti STATIC cacti.c actor_system.c actor.c  queue.c threadpool.c er
 add_executable(macierz macierz.c)
 add_executable(silnia silnia.c)
 add_executable(test_queue test_queue.c) # todo usunac
+add_executable(test_actor test_actor.c) # todo usunac
 add_subdirectory(test)
 
 install(TARGETS cacti DESTINATION .)

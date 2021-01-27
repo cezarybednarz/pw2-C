@@ -76,6 +76,18 @@ CMAKE_BINARY_DIR = /home/cezary/Studia/PW/pw2-C/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/var/lib/snapd/snap/clion/138/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/var/lib/snapd/snap/clion/138/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -142,18 +154,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/var/lib/snapd/snap/clion/138/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/var/lib/snapd/snap/clion/138/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/var/lib/snapd/snap/clion/138/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -238,6 +238,19 @@ silnia: cmake_check_build_system
 silnia/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
 .PHONY : silnia/fast
+
+#=============================================================================
+# Target rules for targets named test_actor
+
+# Build rule for target.
+test_actor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_actor
+.PHONY : test_actor
+
+# fast build rule for target.
+test_actor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/build
+.PHONY : test_actor/fast
 
 #=============================================================================
 # Target rules for targets named test_empty
@@ -441,6 +454,33 @@ silnia.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/silnia.c.s
 .PHONY : silnia.c.s
 
+test_actor.o: test_actor.c.o
+
+.PHONY : test_actor.o
+
+# target to build an object file
+test_actor.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/test_actor.c.o
+.PHONY : test_actor.c.o
+
+test_actor.i: test_actor.c.i
+
+.PHONY : test_actor.i
+
+# target to preprocess a source file
+test_actor.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/test_actor.c.i
+.PHONY : test_actor.c.i
+
+test_actor.s: test_actor.c.s
+
+.PHONY : test_actor.s
+
+# target to generate assembly for a file
+test_actor.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/test_actor.c.s
+.PHONY : test_actor.c.s
+
 test_queue.o: test_queue.c.o
 
 .PHONY : test_queue.o
@@ -511,6 +551,7 @@ help:
 	@echo "... cacti"
 	@echo "... macierz"
 	@echo "... silnia"
+	@echo "... test_actor"
 	@echo "... test_empty"
 	@echo "... test_queue"
 	@echo "... actor.o"
@@ -534,6 +575,9 @@ help:
 	@echo "... silnia.o"
 	@echo "... silnia.i"
 	@echo "... silnia.s"
+	@echo "... test_actor.o"
+	@echo "... test_actor.i"
+	@echo "... test_actor.s"
 	@echo "... test_queue.o"
 	@echo "... test_queue.i"
 	@echo "... test_queue.s"

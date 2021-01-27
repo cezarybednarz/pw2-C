@@ -17,6 +17,16 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="test_queue">
 				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/test_queue" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
@@ -243,21 +253,55 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="install">
+			<Target title="test_actor">
+				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/test_actor" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
-				<Option type="4"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_actor"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="install/local">
+			<Target title="test_actor/fast">
+				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/test_actor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_actor/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -348,6 +392,9 @@
 		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/test/test_empty.c">
 			<Option target="test_empty"/>
+		</Unit>
+		<Unit filename="/home/cezary/Studia/PW/pw2-C/test_actor.c">
+			<Option target="test_actor"/>
 		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/test_queue.c">
 			<Option target="test_queue"/>
