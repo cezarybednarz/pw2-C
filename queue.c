@@ -20,9 +20,6 @@ queue_t *new_queue(void) {
 }
 
 int queue_push(queue_t *q, void *data) {
-
-  printf(" >>> queue_push\n");
-
   if (q->capacity == q->length) {
     q->capacity *= 2;
 
@@ -49,9 +46,6 @@ int queue_push(queue_t *q, void *data) {
 }
 
 void* queue_pop(queue_t *q) {
-
-  printf(" >>> queue_pop\n");
-
   q->length--;
   void* ret = q->data_array[q->back];
   q->back = (q->back + 1) % q->capacity;

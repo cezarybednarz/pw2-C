@@ -22,6 +22,7 @@ int actor_init(actor_t* actor, thread_pool_t* pool, role_t *role, actor_system_t
   actor->a_system = a_system;
   actor->scheduled = false;
   actor->dead = false;
+  actor->state = NULL;
 
   return 0;
 }
@@ -32,13 +33,12 @@ void actor_destroy(actor_t* actor) {
   free(actor);
 }
 
+
 // push message to queue and schedule actor
 int actor_push_message(actor_t* actor, message_t* message) {
   if (pthread_mutex_lock(&(actor->lock)) != 0) {
     return -1;
   }
-
-  // todo handle actor death
 
   if (queue_push(actor->message_queue, message) != 0) {
     return -1;
@@ -86,23 +86,25 @@ void handle_spawn(actor_t* actor, message_t* message) {
   }
 }
 
-void handle_godie( __attribute__ ((unused)) actor_t* actor,  __attribute__ ((unused)) message_t* message) {
-  printf("handle_godie: MSG_GODIE not handled yet");
-  
-  // todo
+void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
+  printf("handle_godie: starting for actor %ld", actor->id);
+
+  actor->dead = true;
 }
 
 void handle_hello(actor_t* actor, message_t* message) {
-  actor_id_t* parent_actor = (actor_id_t*)message->data;
-  printf("handle_hello: actor %ld received MSG_HELLO from actor %ld\n", actor->id, *parent_actor);
-  // todo zweryfikowac
-  //actor->role->prompts[0](NULL, 0, NULL);
+  actor_id_t* parent_id = (actor_id_t*)message->data;
+
+  printf("handle_hello: actor %ld received MSG_HELLO from actor %ld\n", actor->id, *parent_id);
+
+  actor->role->prompts[0](&(actor->state), 0, &actor->id);
 }
 
 // pulls and executes one message from message queue for scheduled actor
-void actor_process_message(actor_t* actor, size_t argsz) {
+void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz) {
 
   if (pthread_mutex_lock(&(actor->lock)) != 0) {
+    syserr("mutex lock");
     return;
   }
 
@@ -112,8 +114,14 @@ void actor_process_message(actor_t* actor, size_t argsz) {
   }
   message_t* message = (message_t*)queue_pop(actor->message_queue);
 
-
   if (pthread_mutex_unlock(&(actor->lock))) {
+    syserr("mutex unlock");
+    return;
+  }
+
+  if(actor->dead) {
+    printf("actor_process_image: actor %lu is already dead, skipping\n", actor->id);
+    free(message);
     return;
   }
 
@@ -137,7 +145,29 @@ void actor_process_message(actor_t* actor, size_t argsz) {
       // todo
       printf("Other messages are currently not handled properly\n");
   }
+  free(message);
 
-  return;
+  if (pthread_mutex_lock(&(actor->lock)) != 0) {
+    syserr("mutex lock");
+    return;
+  }
+
+  if (actor->message_queue->length == 0) {
+    actor->scheduled = false;
+  }
+  else {
+    runnable_t runnable;
+    runnable.arg = actor;
+    runnable.argsz = sizeof(actor_t*);
+    runnable.function = (void (*)(void *, size_t))&actor_process_message;
+    defer(actor->pool, runnable);
+  }
+
+  if (pthread_mutex_unlock(&(actor->lock))) {
+    syserr("mutex unlock");
+    return;
+  }
+
+
 }
 

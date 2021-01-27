@@ -22,6 +22,7 @@ typedef struct actor
   queue_t* message_queue;
   bool scheduled;
   bool dead;
+  void* state;
 
 } actor_t;
 
@@ -29,7 +30,7 @@ int actor_init(actor_t* actor, thread_pool_t* pool, role_t* role, actor_system_t
 
 void actor_destroy(actor_t* actor);
 
-void actor_process_message(actor_t* actor,  __attribute__ ((unused)) size_t argsz);
+void actor_process_message(actor_t* actor, size_t argsz);
 
 int actor_push_message(actor_t* actor, message_t* message);
 

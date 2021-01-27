@@ -21,7 +21,7 @@ void counter(int* size, size_t argsz) {
 
 bool test_thread_pool_basic() {
 	thread_pool_t* pool = malloc(sizeof(thread_pool_t));
-	thread_pool_init(pool, 1);
+	thread_pool_init(pool, 3);
 
 	int x = 10;
 	runnable_t runnable;
@@ -69,12 +69,12 @@ bool test_spawn() {
 
 int main() {
    //sleep(1);
-/*	if (!test_thread_pool_empty()) {
+	if (!test_thread_pool_empty()) {
 		printf("Error in test_thread_pool_empty\n");
 	}
 	if (!test_thread_pool_basic()) {
 		printf("Error in test_thread_pool_basic\n");
-	}*/
+	}
 	if (!test_spawn()) {
 		printf("Error in test_spawn\n");
 	}
