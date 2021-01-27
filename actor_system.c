@@ -32,21 +32,15 @@ actor_t* actor_system_find(actor_system_t* a_system, actor_id_t id) {
     return NULL;
   }
 
-  actor_t* ret;
-  
-  actor_t** data = (actor_t**)a_system->actors->data_array;
-  for (size_t i = 0; i < a_system->actors->length; i++) {
-    if (data[i]->id == id) {
-      ret = data[i];
-      if (pthread_mutex_unlock(&(a_system->lock)) != 0) {
-        return NULL;
-      }
-      return ret;
-    }
+  if ((unsigned long)id >= a_system->actors->length) {
+    return NULL;
   }
+  actor_t* ret = a_system->actors->data_array[id];
 
-  pthread_mutex_unlock(&(a_system->lock));
-  return NULL;
+  if (pthread_mutex_unlock(&(a_system->lock)) != 0) {
+    return NULL;
+  }
+  return ret;
 }
 
 int actor_system_insert(actor_system_t* a_system, actor_t* actor) {

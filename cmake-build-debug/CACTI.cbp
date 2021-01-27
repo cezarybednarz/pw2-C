@@ -17,61 +17,11 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="install/strip">
-				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install/local">
-				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install">
-				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="list_install_components">
-				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="cacti">
-				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/libcacti.a" prefix_auto="0" extension_auto="0"/>
+			<Target title="test_queue">
+				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/test_queue" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="2"/>
+				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
@@ -83,17 +33,17 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 cacti"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_queue"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="cacti/fast">
-				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/libcacti.a" prefix_auto="0" extension_auto="0"/>
+			<Target title="test_queue/fast">
+				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/test_queue" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="2"/>
+				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
@@ -105,7 +55,17 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 cacti/fast"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_queue/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -155,11 +115,85 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="rebuild_cache">
+			<Target title="cacti">
+				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/libcacti.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 cacti"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cacti/fast">
+				<Option output="/home/cezary/Studia/PW/pw2-C/cmake-build-debug/libcacti.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 cacti/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -209,11 +243,21 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test">
+			<Target title="install">
 				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/cezary/Studia/PW/pw2-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/home/cezary/Studia/PW/pw2-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -304,6 +348,9 @@
 		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/test/test_empty.c">
 			<Option target="test_empty"/>
+		</Unit>
+		<Unit filename="/home/cezary/Studia/PW/pw2-C/test_queue.c">
+			<Option target="test_queue"/>
 		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/threadpool.c">
 			<Option target="cacti"/>

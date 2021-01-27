@@ -21,7 +21,7 @@ void counter(int* size, size_t argsz) {
 
 bool test_thread_pool_basic() {
 	thread_pool_t* pool = malloc(sizeof(thread_pool_t));
-	thread_pool_init(pool, 3);
+	thread_pool_init(pool, 1);
 
 	int x = 10;
 	runnable_t runnable;
@@ -50,7 +50,6 @@ bool test_spawn() {
 		printf("actor_system_create failed\n");
 		return false;
 	}
-
 	message_t message;
 	message.message_type = MSG_SPAWN;
 	message.data = role;
@@ -63,18 +62,20 @@ bool test_spawn() {
     return false;
   }
 
-	// todo no message on screen
-
+  // todo write actor_system_join
+  sleep(3);
+  
 	return true;
 }
 
 int main() {
-//	if (!test_thread_pool_empty()) {
-//		printf("Error in test_thread_pool_empty\n");
-//	}
-//	if (!test_thread_pool_basic()) {
-//		printf("Error in test_thread_pool_basic\n");
-//	}
+  sleep(1);
+/*	if (!test_thread_pool_empty()) {
+		printf("Error in test_thread_pool_empty\n");
+	}
+	if (!test_thread_pool_basic()) {
+		printf("Error in test_thread_pool_basic\n");
+	}*/
 	if (!test_spawn()) {
 		printf("Error in test_spawn\n");
 	}

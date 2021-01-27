@@ -4,12 +4,10 @@
 #include "cacti.h"
 
 typedef long actor_id_t;
-typedef struct thread_pool thread_pool_t;
-typedef struct role role_t;
-typedef struct message message_t;
 typedef struct actor actor_t;
 
-typedef struct actor_system 
+
+typedef struct actor_system
 {
   pthread_mutex_t lock;
 
@@ -17,6 +15,7 @@ typedef struct actor_system
   queue_t* actors;
 
 } actor_system_t;
+
 
 int actor_system_init(actor_system_t* a_system);
 

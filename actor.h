@@ -6,7 +6,6 @@
 
 typedef long actor_id_t;
 typedef struct actor_system actor_system_t;
-typedef struct thread_pool thread_pool_t;
 typedef struct role role_t;
 typedef struct message message_t;
 
