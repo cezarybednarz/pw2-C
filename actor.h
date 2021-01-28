@@ -11,6 +11,7 @@ typedef struct message message_t;
 
 typedef struct actor 
 {
+  void* state;
   actor_id_t id;
 
   actor_system_t* a_system;
@@ -22,8 +23,6 @@ typedef struct actor
   queue_t* message_queue;
   bool scheduled;
   bool dead;
-  void* state;
-
 } actor_t;
 
 int actor_init(actor_t* actor, thread_pool_t* pool, role_t* role, actor_system_t* a_system);

@@ -40,19 +40,25 @@ bool test_thread_pool_basic() {
 	return true;
 }
 
+void example_act(void **stateptr, size_t nbytes, void* data) {
+  printf("example_act: Hello!\n");
+}
+
 bool test_spawn() {
 	actor_id_t first;
-	role_t* role = malloc(sizeof(role_t));
-	role->nprompts = 0;
+  role_t role;
+  role.nprompts = 1;
+  role.prompts = malloc(role.nprompts * sizeof(act_t));
+  role.prompts[0] = example_act;
 
-	int res = actor_system_create(&first, role);
+	int res = actor_system_create(&first, &role);
 	if (res != 0) {
 		printf("actor_system_create failed\n");
 		return false;
 	}
 	message_t message;
 	message.message_type = MSG_SPAWN;
-	message.data = role;
+	message.data = &role;
 	message.nbytes = sizeof(role_t*);
 
 	res = send_message(first, message);
@@ -61,9 +67,27 @@ bool test_spawn() {
     return false;
   }
 
-  // todo write actor_system_join
-  sleep(3);
-  
+  message.message_type = MSG_GODIE;
+  message.data = &role;
+  message.nbytes = sizeof(role_t*);
+
+  res = send_message(first, message);
+  if (res != 0) {
+    printf("error in send_message to 0: %d\n", res);
+    return false;
+  }
+
+  sleep(1);
+  res = send_message(1, message); // MSG_GODIE
+  if (res != 0) {
+    printf("error in send_message to 1: %d\n", res);
+    return false;
+  }
+
+  actor_system_join(first);
+
+  free(role.prompts);
+
 	return true;
 }
 

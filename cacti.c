@@ -31,7 +31,31 @@ int actor_system_create(actor_id_t *actor, role_t *const role) {
 }
 
 void actor_system_join(actor_id_t actor) {
-  // todo
+
+  if (actor_system_find(&a_system, actor) == NULL) {
+    return;
+  }
+
+  printf("actor_system_join: start!\n");
+
+  a_system.finished = true;
+
+  if (pthread_mutex_lock(&(a_system.lock)) != 0) {
+    syserr("pthread_mutex_lock");
+    return;
+  }
+  while (a_system.alive > 0) {
+    if (pthread_cond_wait(&(a_system.finished_cond), &(a_system.lock)) != 0) {
+      syserr("pthread_cond_wait");
+      return;
+    }
+  }
+  if (pthread_mutex_unlock(&(a_system.lock)) != 0) {
+    syserr("pthread_mutex_unlock");
+    return;
+  }
+
+  actor_system_destroy(&a_system);
 }
 
 int send_message(actor_id_t actor_id, message_t message) {

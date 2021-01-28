@@ -28,11 +28,12 @@ int actor_init(actor_t* actor, thread_pool_t* pool, role_t *role, actor_system_t
 }
 
 void actor_destroy(actor_t* actor) {
-  pthread_mutex_destroy(&(actor->lock));
+  if (pthread_mutex_destroy(&(actor->lock)) != 0) {
+    syserr("pthread_mutex_destoy");
+  }
   queue_destroy(actor->message_queue);
   free(actor);
 }
-
 
 // push message to queue and schedule actor
 int actor_push_message(actor_t* actor, message_t* message) {
@@ -87,9 +88,35 @@ void handle_spawn(actor_t* actor, message_t* message) {
 }
 
 void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
-  printf("handle_godie: starting for actor %ld", actor->id);
+  printf("handle_godie: starting for actor %ld\n", actor->id);
 
+  if (actor->dead) {
+    syserr("handle_godie: double godie on same actor");
+  }
   actor->dead = true;
+
+  if (pthread_mutex_lock(&(actor->a_system->lock)) != 0) {
+    syserr("pthread_mutex_lock");
+    return;
+  }
+
+
+  actor->a_system->alive--;
+
+  printf("handle_godie: after killing %lu, actor->a_system->alive = %d\n", actor->id, actor->a_system->alive);
+
+  if (actor->a_system->alive == 0) {
+    if (pthread_cond_signal(&(actor->a_system->finished_cond)) != 0) {
+      syserr("pthread_cond_signal");
+      return;
+    }
+  }
+
+  if (pthread_mutex_unlock(&(actor->a_system->lock)) != 0) {
+    syserr("pthread_mutex_lock");
+    return;
+  }
+
 }
 
 void handle_hello(actor_t* actor, message_t* message) {
@@ -114,7 +141,7 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
   }
   message_t* message = (message_t*)queue_pop(actor->message_queue);
 
-  if (pthread_mutex_unlock(&(actor->lock))) {
+  if (pthread_mutex_unlock(&(actor->lock)) != 0) {
     syserr("mutex unlock");
     return;
   }
@@ -147,7 +174,7 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
   free(message);
 
   if (pthread_mutex_lock(&(actor->lock)) != 0) {
-    syserr("mutex lock");
+    syserr("mutex lock 2");
     return;
   }
 
@@ -162,7 +189,7 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
     defer(actor->pool, runnable);
   }
 
-  if (pthread_mutex_unlock(&(actor->lock))) {
+  if (pthread_mutex_unlock(&(actor->lock)) != 0) {
     syserr("mutex unlock");
     return;
   }
