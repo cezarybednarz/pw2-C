@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/cezary/Studia/PW/pw2-C/test_actor.c" "/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/test_actor.dir/test_actor.c.o"
+  "/home/cezary/Studia/PW/pw2-C/test/test_actor.c" "/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles/test_actor.dir/test/test_actor.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

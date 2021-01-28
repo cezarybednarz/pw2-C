@@ -1,4 +1,4 @@
-#include "cacti.h"
+#include "../cacti.h"
 #include <stdio.h>
 
 #define mxn (size_t)1e3

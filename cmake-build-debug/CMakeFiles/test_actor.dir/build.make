@@ -77,27 +77,27 @@ include CMakeFiles/test_actor.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_actor.dir/flags.make
 
-CMakeFiles/test_actor.dir/test_actor.c.o: CMakeFiles/test_actor.dir/flags.make
-CMakeFiles/test_actor.dir/test_actor.c.o: ../test_actor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test_actor.dir/test_actor.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_actor.dir/test_actor.c.o   -c /home/cezary/Studia/PW/pw2-C/test_actor.c
+CMakeFiles/test_actor.dir/test/test_actor.c.o: CMakeFiles/test_actor.dir/flags.make
+CMakeFiles/test_actor.dir/test/test_actor.c.o: ../test/test_actor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test_actor.dir/test/test_actor.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_actor.dir/test/test_actor.c.o   -c /home/cezary/Studia/PW/pw2-C/test/test_actor.c
 
-CMakeFiles/test_actor.dir/test_actor.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_actor.dir/test_actor.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cezary/Studia/PW/pw2-C/test_actor.c > CMakeFiles/test_actor.dir/test_actor.c.i
+CMakeFiles/test_actor.dir/test/test_actor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_actor.dir/test/test_actor.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cezary/Studia/PW/pw2-C/test/test_actor.c > CMakeFiles/test_actor.dir/test/test_actor.c.i
 
-CMakeFiles/test_actor.dir/test_actor.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_actor.dir/test_actor.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/test_actor.c -o CMakeFiles/test_actor.dir/test_actor.c.s
+CMakeFiles/test_actor.dir/test/test_actor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_actor.dir/test/test_actor.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/test/test_actor.c -o CMakeFiles/test_actor.dir/test/test_actor.c.s
 
 # Object files for target test_actor
 test_actor_OBJECTS = \
-"CMakeFiles/test_actor.dir/test_actor.c.o"
+"CMakeFiles/test_actor.dir/test/test_actor.c.o"
 
 # External object files for target test_actor
 test_actor_EXTERNAL_OBJECTS =
 
-test_actor: CMakeFiles/test_actor.dir/test_actor.c.o
+test_actor: CMakeFiles/test_actor.dir/test/test_actor.c.o
 test_actor: CMakeFiles/test_actor.dir/build.make
 test_actor: libcacti.a
 test_actor: CMakeFiles/test_actor.dir/link.txt

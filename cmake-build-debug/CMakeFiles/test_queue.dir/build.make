@@ -77,27 +77,27 @@ include CMakeFiles/test_queue.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_queue.dir/flags.make
 
-CMakeFiles/test_queue.dir/test_queue.c.o: CMakeFiles/test_queue.dir/flags.make
-CMakeFiles/test_queue.dir/test_queue.c.o: ../test_queue.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test_queue.dir/test_queue.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_queue.dir/test_queue.c.o   -c /home/cezary/Studia/PW/pw2-C/test_queue.c
+CMakeFiles/test_queue.dir/test/test_queue.c.o: CMakeFiles/test_queue.dir/flags.make
+CMakeFiles/test_queue.dir/test/test_queue.c.o: ../test/test_queue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test_queue.dir/test/test_queue.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_queue.dir/test/test_queue.c.o   -c /home/cezary/Studia/PW/pw2-C/test/test_queue.c
 
-CMakeFiles/test_queue.dir/test_queue.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_queue.dir/test_queue.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cezary/Studia/PW/pw2-C/test_queue.c > CMakeFiles/test_queue.dir/test_queue.c.i
+CMakeFiles/test_queue.dir/test/test_queue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_queue.dir/test/test_queue.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cezary/Studia/PW/pw2-C/test/test_queue.c > CMakeFiles/test_queue.dir/test/test_queue.c.i
 
-CMakeFiles/test_queue.dir/test_queue.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_queue.dir/test_queue.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/test_queue.c -o CMakeFiles/test_queue.dir/test_queue.c.s
+CMakeFiles/test_queue.dir/test/test_queue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_queue.dir/test/test_queue.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cezary/Studia/PW/pw2-C/test/test_queue.c -o CMakeFiles/test_queue.dir/test/test_queue.c.s
 
 # Object files for target test_queue
 test_queue_OBJECTS = \
-"CMakeFiles/test_queue.dir/test_queue.c.o"
+"CMakeFiles/test_queue.dir/test/test_queue.c.o"
 
 # External object files for target test_queue
 test_queue_EXTERNAL_OBJECTS =
 
-test_queue: CMakeFiles/test_queue.dir/test_queue.c.o
+test_queue: CMakeFiles/test_queue.dir/test/test_queue.c.o
 test_queue: CMakeFiles/test_queue.dir/build.make
 test_queue: libcacti.a
 test_queue: CMakeFiles/test_queue.dir/link.txt

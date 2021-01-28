@@ -35,8 +35,8 @@ typedef long actor_id_t;
 
 actor_id_t actor_id_self();
 
-// todo dodac const
-typedef void (* act_t)(void **stateptr, size_t nbytes, void *data);
+
+typedef void (* const act_t)(void **stateptr, size_t nbytes, void *data);
 
 typedef struct role
 {

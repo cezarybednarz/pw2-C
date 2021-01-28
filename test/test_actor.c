@@ -1,4 +1,4 @@
-#include "cacti.h"
+#include "../cacti.h"
 
 int main() {
   thread_pool_t* pool = malloc(sizeof(thread_pool_t));
