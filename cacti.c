@@ -1,5 +1,6 @@
 #include "cacti.h"
 
+_Thread_local actor_id_t actor_id_thread_local;
 
 actor_system_t a_system;
 
@@ -76,6 +77,10 @@ int send_message(actor_id_t actor_id, message_t message) {
   }
 
   return 0;
+}
+
+actor_id_t actor_id_self() {
+  return actor_id_thread_local;
 }
 
 

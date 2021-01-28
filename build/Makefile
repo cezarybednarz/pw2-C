@@ -120,6 +120,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/var/lib/snapd/snap/cmake/769/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -142,17 +153,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/var/lib/snapd/snap/cmake/769/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -187,6 +187,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named silnia
+
+# Build rule for target.
+silnia: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 silnia
+.PHONY : silnia
+
+# fast build rule for target.
+silnia/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
+.PHONY : silnia/fast
+
+#=============================================================================
 # Target rules for targets named macierz
 
 # Build rule for target.
@@ -200,17 +213,17 @@ macierz/fast:
 .PHONY : macierz/fast
 
 #=============================================================================
-# Target rules for targets named silnia
+# Target rules for targets named test_actor
 
 # Build rule for target.
-silnia: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 silnia
-.PHONY : silnia
+test_actor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_actor
+.PHONY : test_actor
 
 # fast build rule for target.
-silnia/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
-.PHONY : silnia/fast
+test_actor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/build
+.PHONY : test_actor/fast
 
 #=============================================================================
 # Target rules for targets named cacti
@@ -440,6 +453,33 @@ silnia.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/silnia.c.s
 .PHONY : silnia.c.s
 
+test_actor.o: test_actor.c.o
+
+.PHONY : test_actor.o
+
+# target to build an object file
+test_actor.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/test_actor.c.o
+.PHONY : test_actor.c.o
+
+test_actor.i: test_actor.c.i
+
+.PHONY : test_actor.i
+
+# target to preprocess a source file
+test_actor.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/test_actor.c.i
+.PHONY : test_actor.c.i
+
+test_actor.s: test_actor.c.s
+
+.PHONY : test_actor.s
+
+# target to generate assembly for a file
+test_actor.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_actor.dir/build.make CMakeFiles/test_actor.dir/test_actor.c.s
+.PHONY : test_actor.c.s
+
 test_queue.o: test_queue.c.o
 
 .PHONY : test_queue.o
@@ -510,6 +550,7 @@ help:
 	@echo "... cacti"
 	@echo "... macierz"
 	@echo "... silnia"
+	@echo "... test_actor"
 	@echo "... test_empty"
 	@echo "... test_queue"
 	@echo "... actor.o"
@@ -533,6 +574,9 @@ help:
 	@echo "... silnia.o"
 	@echo "... silnia.i"
 	@echo "... silnia.s"
+	@echo "... test_actor.o"
+	@echo "... test_actor.i"
+	@echo "... test_actor.s"
 	@echo "... test_queue.o"
 	@echo "... test_queue.i"
 	@echo "... test_queue.s"

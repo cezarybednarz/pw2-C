@@ -34,6 +34,7 @@ typedef struct message
 typedef long actor_id_t;
 
 // todo dodac thread_local
+
 actor_id_t actor_id_self();
 
 // todo dodac const

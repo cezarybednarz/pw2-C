@@ -158,7 +158,8 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
       break;
     case MSG_GODIE:
       handle_godie(actor, message);
-      break;
+      free(message);
+      return;
     case MSG_HELLO:
       handle_hello(actor, message);
       break;
