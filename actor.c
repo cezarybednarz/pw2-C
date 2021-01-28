@@ -97,7 +97,7 @@ void handle_hello(actor_t* actor, message_t* message) {
 
   printf("handle_hello: actor %ld received MSG_HELLO from actor %ld\n", actor->id, *parent_id);
 
-  actor->role->prompts[0](&(actor->state), 0, &actor->id);
+  actor->role->prompts[0](&(actor->state), message->nbytes, message->data);
 }
 
 // pulls and executes one message from message queue for scheduled actor
@@ -140,10 +140,9 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
       if (message->message_type < 0 || (size_t)message->message_type >= actor->role->nprompts) {
         syserr("Wrong message type");
         return;
-      }  
+      }
 
-      // todo
-      printf("Other messages are currently not handled properly\n");
+      actor->role->prompts[message->message_type](&(actor->state), message->nbytes, message->data);
   }
   free(message);
 
@@ -167,7 +166,5 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
     syserr("mutex unlock");
     return;
   }
-
-
 }
 
