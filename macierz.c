@@ -81,6 +81,8 @@ void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
   local_data_t* local_data = data;
   *stateptr = local_data;
 
+  printf("matrix_assign_values: local_data->column_id = %d, local_data->k = %d", local_data->column_id, local_data->k);
+
   if (local_data->column_id == local_data->k - 1) {
     // last actor
     local_data->counted_rows = 0;
@@ -170,6 +172,8 @@ int main() {
   // create first actor
   actor_system_create(&first_actor, &role);
 
+  printf("first actor: %lu\n", first_actor);
+
   int** matrix_transpose = malloc(k * sizeof(int));
   if (matrix_transpose == NULL) {
     syserr("malloc");
@@ -214,6 +218,14 @@ int main() {
     .message_type = MSG_ASSIGN_VALUES,
     .data = first_data
   };
-  send_message(first_actor,msg_assign_values);
-  
+
+  printf("beginning, n = %d, k = %d\n", n, k);
+
+  int res = send_message(first_actor, msg_assign_values);
+  if (res != 0) {
+    printf("res = %d", res);
+  }
+
+  // todo join
+  sleep(3);
 }

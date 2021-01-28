@@ -63,9 +63,6 @@ int actor_push_message(actor_t* actor, message_t* message) {
 }
 
 void handle_spawn(actor_t* actor, message_t* message) {
-
-  printf("handle_spawn: starting\n");
-
   actor_t* new_actor = malloc(sizeof(actor_t));
   if (new_actor == NULL) {
     return;
@@ -89,7 +86,6 @@ void handle_spawn(actor_t* actor, message_t* message) {
 }
 
 void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
-  printf("handle_godie: starting for actor %ld\n", actor->id);
 
   if (actor->dead) {
     syserr("handle_godie: double godie on same actor");
@@ -101,10 +97,7 @@ void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
     return;
   }
 
-
   actor->a_system->alive--;
-
-  printf("handle_godie: after killing %lu, actor->a_system->alive = %d\n", actor->id, actor->a_system->alive);
 
   if (actor->a_system->alive == 0) {
     if (pthread_cond_signal(&(actor->a_system->finished_cond)) != 0) {
@@ -122,9 +115,6 @@ void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
 
 void handle_hello(actor_t* actor, message_t* message) {
   actor_id_t* parent_id = (actor_id_t*)message->data;
-
-  printf("handle_hello: actor %ld received MSG_HELLO from actor %ld\n", actor->id, *parent_id);
-
   actor->role->prompts[0](&(actor->state), message->nbytes, message->data);
 }
 
