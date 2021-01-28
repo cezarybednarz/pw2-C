@@ -40,10 +40,6 @@ actor.h
 
 /home/cezary/Studia/PW/pw2-C/err.h
 
-/home/cezary/Studia/PW/pw2-C/queue.c
-queue.h
-/home/cezary/Studia/PW/pw2-C/queue.h
-
 /home/cezary/Studia/PW/pw2-C/queue.h
 pthread.h
 -

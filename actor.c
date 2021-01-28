@@ -47,6 +47,7 @@ int actor_push_message(actor_t* actor, message_t* message) {
 
   if (!actor->scheduled) {
     actor->scheduled = true;
+    actor_id_set(actor->id);
 
     runnable_t runnable;
     runnable.arg = actor;

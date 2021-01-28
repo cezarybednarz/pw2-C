@@ -41,7 +41,7 @@ bool test_thread_pool_basic() {
 }
 
 void example_act(void **stateptr, size_t nbytes, void* data) {
-  printf("example_act: Hello!\n");
+  printf("example_act: Hello from actor %lu\n", actor_id_self());
 }
 
 bool test_spawn() {
