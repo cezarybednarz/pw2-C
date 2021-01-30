@@ -53,22 +53,25 @@ void matrix_hello(void **stateptr, size_t nbytes, void* data) {
 
 
 void matrix_hello_back(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_sum_row: Hello from actor %lu\n", actor_id_self());
+  printf("matrix_hello_back: Hello from actor %lu\n", actor_id_self());
 
   actor_id_t* next_id = (actor_id_t*)data;
   local_data_t* local_data = *stateptr;
+  local_data->next_actor = *next_id;
 
   local_data_t* next_data = malloc(sizeof(local_data_t));
   if (next_data == NULL) {
     syserr("malloc");
   }
+  printf("matrix_hello_back: local_data {n = %d, k = %d, column_id = %d, first_actor = %lu, next_actor = %lu}\n", local_data->n, local_data->k, local_data->column_id, local_data->first_actor, local_data->next_actor);
   // copy content of actor to next actor
   *next_data = *local_data;
   next_data->column_id++;
 
+
   message_t msg_assign_values = {
     .message_type = MSG_ASSIGN_VALUES,
-    .data = local_data
+    .data = next_data
   };
   send_message(*next_id, msg_assign_values);
   free(data);
@@ -81,7 +84,7 @@ void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
   local_data_t* local_data = data;
   *stateptr = local_data;
 
-  printf("matrix_assign_values: local_data->column_id = %d, local_data->k = %d", local_data->column_id, local_data->k);
+  printf("matrix_assign_values: local_data->column_id = %d, local_data->k = %d\n", local_data->column_id, local_data->k);
 
   if (local_data->column_id == local_data->k - 1) {
     // last actor
@@ -113,16 +116,18 @@ void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
       .message_type = MSG_SPAWN,
       .data = local_data->role
     };
-    send_message(local_data->next_actor, msg_spawn);
+    send_message(actor_id_self(), msg_spawn);
   }
 }
 
 
 void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_sum_row: Hello from actor %lu", actor_id_self());
+  printf("matrix_sum_row: Hello from actor %lu\n", actor_id_self());
 
   sum_data_t* sum_data = data;
   local_data_t* local_data = *stateptr;
+
+  printf("matrix_sum_row: sum_data->sum = %d sum_data->row = %d\n", sum_data->sum, sum_data->row);
 
   // calculate sum and wait
   sum_data->sum += local_data->matrix_transpose[local_data->column_id][sum_data->row];
@@ -130,7 +135,7 @@ void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
 
   if (local_data->column_id == local_data->k - 1) {
     // last column
-    local_data->row_sums[local_data->column_id] = sum_data->sum;
+    local_data->row_sums[sum_data->row] = sum_data->sum;
     local_data->counted_rows++;
     if (local_data->counted_rows == local_data->n) {
       // print output
@@ -227,5 +232,5 @@ int main() {
   }
 
   // todo join
-  sleep(3);
+  sleep(200);
 }

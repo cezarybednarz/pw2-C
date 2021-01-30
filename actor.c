@@ -47,7 +47,6 @@ int actor_push_message(actor_t* actor, message_t* message) {
 
   if (!actor->scheduled) {
     actor->scheduled = true;
-    actor_id_set(actor->id);
 
     runnable_t runnable;
     runnable.arg = actor;
@@ -63,6 +62,7 @@ int actor_push_message(actor_t* actor, message_t* message) {
 }
 
 void handle_spawn(actor_t* actor, message_t* message) {
+  printf("handle_spawn: Hello from actor %lu\n", actor_id_self());
   actor_t* new_actor = malloc(sizeof(actor_t));
   if (new_actor == NULL) {
     return;
@@ -86,6 +86,7 @@ void handle_spawn(actor_t* actor, message_t* message) {
 }
 
 void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
+  printf("handle_godie: Hello from actor %lu\n", actor_id_self());
 
   if (actor->dead) {
     syserr("handle_godie: double godie on same actor");
@@ -125,6 +126,8 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
     syserr("mutex lock");
     return;
   }
+
+  actor_id_set(actor->id);
 
   if (!actor->scheduled) {
     syserr("actor is currently not scheduled");

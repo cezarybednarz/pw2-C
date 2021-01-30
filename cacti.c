@@ -80,9 +80,11 @@ int send_message(actor_id_t actor_id, message_t message) {
   message_copy->data = message.data;
   message_copy->nbytes = message.nbytes;
 
+  printf(" send_message: actor %lu is sending message->type = %lu to %lu\n", actor_id_self(), message.message_type, actor_id);
   if (actor_push_message(actor, message_copy) != 0) {
     return -1;
   }
+
 
   return 0;
 }
