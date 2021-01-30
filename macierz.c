@@ -1,11 +1,12 @@
 #include <unistd.h>
 #include "cacti.h"
 
-#define MESSAGES          4
+#define MESSAGES          5
 
 #define MSG_HELLO_BACK    1
 #define MSG_ASSIGN_VALUES 2
 #define MSG_SUM_ROW       3
+#define MSG_KILL_ACTOR    4
 
 typedef struct local_data {
 
@@ -142,7 +143,12 @@ void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
       for (int i = 0; i < local_data->n; i++) {
         printf("%d\n", local_data->row_sums[i]);
       }
-      // todo clear all actors
+
+      // start killing actors
+      message_t msg_kill_actor = {
+        .message_type = MSG_KILL_ACTOR
+      };
+      send_message(local_data->first_actor, msg_kill_actor);
     }
   }
   else {
@@ -152,6 +158,24 @@ void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
       .data = sum_data
     };
     send_message(local_data->next_actor, msg_sum_row);
+  }
+}
+
+void matrix_kill_actor(void **stateptr, size_t nbytes, void* data) {
+  printf("matrix_kill_actor: Hello from %lu", actor_id_self());
+  local_data_t* local_data = *stateptr;
+
+  message_t msg_godie = {
+    .message_type = MSG_GODIE
+  };
+  send_message(actor_id_self(), msg_godie);
+
+  if (local_data->column_id < local_data->k) {
+    // kill next actor
+    message_t msg_kill_actor = {
+      .message_type = MSG_KILL_ACTOR
+    };
+    send_message(local_data->next_actor, msg_kill_actor);
   }
 }
 
@@ -169,6 +193,7 @@ int main() {
   prompts[MSG_HELLO_BACK] =    &matrix_hello_back;
   prompts[MSG_ASSIGN_VALUES] = &matrix_assign_values;
   prompts[MSG_SUM_ROW] =       &matrix_sum_row;
+  prompts[MSG_KILL_ACTOR] =    &matrix_kill_actor;
   role_t role = {
     .nprompts = nprompts,
     .prompts = prompts
@@ -231,6 +256,5 @@ int main() {
     printf("res = %d", res);
   }
 
-  // todo join
-  sleep(200);
+  actor_system_join(first_actor);
 }
