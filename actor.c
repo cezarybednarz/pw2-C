@@ -62,7 +62,6 @@ int actor_push_message(actor_t* actor, message_t* message) {
 }
 
 void handle_spawn(actor_t* actor, message_t* message) {
-  printf("handle_spawn: Hello from actor %lu\n", actor_id_self());
   actor_t* new_actor = malloc(sizeof(actor_t));
   if (new_actor == NULL) {
     return;
@@ -86,7 +85,6 @@ void handle_spawn(actor_t* actor, message_t* message) {
 }
 
 void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
-  printf("handle_godie: Hello from actor %lu\n", actor_id_self());
 
   if (actor->dead) {
     syserr("handle_godie: double godie on same actor");

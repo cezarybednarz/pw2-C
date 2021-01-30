@@ -34,7 +34,6 @@ typedef struct sum_data {
 
 
 void matrix_hello(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_hello: Hello from actor %lu, message sent by %lu\n", actor_id_self(), *((actor_id_t*)data));
 
   actor_id_t* prev_actor = data;
   actor_id_t* my_id = malloc(sizeof(actor_id_t));
@@ -54,8 +53,6 @@ void matrix_hello(void **stateptr, size_t nbytes, void* data) {
 
 
 void matrix_hello_back(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_hello_back: Hello from actor %lu\n", actor_id_self());
-
   actor_id_t* next_id = (actor_id_t*)data;
   local_data_t* local_data = *stateptr;
   local_data->next_actor = *next_id;
@@ -64,7 +61,6 @@ void matrix_hello_back(void **stateptr, size_t nbytes, void* data) {
   if (next_data == NULL) {
     syserr("malloc");
   }
-  printf("matrix_hello_back: local_data {n = %d, k = %d, column_id = %d, first_actor = %lu, next_actor = %lu}\n", local_data->n, local_data->k, local_data->column_id, local_data->first_actor, local_data->next_actor);
   // copy content of actor to next actor
   *next_data = *local_data;
   next_data->column_id++;
@@ -80,12 +76,8 @@ void matrix_hello_back(void **stateptr, size_t nbytes, void* data) {
 
 
 void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_assign_values: Hello from actor %lu\n", actor_id_self());
-
   local_data_t* local_data = data;
   *stateptr = local_data;
-
-  printf("matrix_assign_values: local_data->column_id = %d, local_data->k = %d\n", local_data->column_id, local_data->k);
 
   if (local_data->column_id == local_data->k - 1) {
     // last actor
@@ -123,12 +115,8 @@ void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
 
 
 void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_sum_row: Hello from actor %lu\n", actor_id_self());
-
   sum_data_t* sum_data = data;
   local_data_t* local_data = *stateptr;
-
-  printf("matrix_sum_row: sum_data->sum = %d sum_data->row = %d\n", sum_data->sum, sum_data->row);
 
   // calculate sum and wait
   sum_data->sum += local_data->matrix_transpose[local_data->column_id][sum_data->row];
@@ -138,11 +126,14 @@ void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
     // last column
     local_data->row_sums[sum_data->row] = sum_data->sum;
     local_data->counted_rows++;
+    free(sum_data);
+
     if (local_data->counted_rows == local_data->n) {
       // print output
       for (int i = 0; i < local_data->n; i++) {
         printf("%d\n", local_data->row_sums[i]);
       }
+      free(local_data->row_sums);
 
       // start killing actors
       message_t msg_kill_actor = {
@@ -162,21 +153,26 @@ void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
 }
 
 void matrix_kill_actor(void **stateptr, size_t nbytes, void* data) {
-  printf("matrix_kill_actor: Hello from %lu", actor_id_self());
   local_data_t* local_data = *stateptr;
+
+  actor_id_t next_actor = local_data->next_actor;
+  bool last = (local_data->column_id == local_data->k - 1);
+
+  free(local_data);
 
   message_t msg_godie = {
     .message_type = MSG_GODIE
   };
   send_message(actor_id_self(), msg_godie);
 
-  if (local_data->column_id < local_data->k) {
+  if (!last) {
     // kill next actor
     message_t msg_kill_actor = {
       .message_type = MSG_KILL_ACTOR
     };
-    send_message(local_data->next_actor, msg_kill_actor);
+    send_message(next_actor, msg_kill_actor);
   }
+
 }
 
 
@@ -202,9 +198,7 @@ int main() {
   // create first actor
   actor_system_create(&first_actor, &role);
 
-  printf("first actor: %lu\n", first_actor);
-
-  int** matrix_transpose = malloc(k * sizeof(int));
+  int** matrix_transpose = malloc(k * sizeof(int*));
   if (matrix_transpose == NULL) {
     syserr("malloc");
   }
@@ -214,7 +208,7 @@ int main() {
       syserr("malloc");
     }
   }
-  int** time_transpose = malloc(k * sizeof(int));
+  int** time_transpose = malloc(k * sizeof(int*));
   if (time_transpose == NULL) {
     syserr("malloc");
   }
@@ -249,12 +243,18 @@ int main() {
     .data = first_data
   };
 
-  printf("beginning, n = %d, k = %d\n", n, k);
 
   int res = send_message(first_actor, msg_assign_values);
   if (res != 0) {
-    printf("res = %d", res);
+    fprintf(stderr, "send_message: %d", res);
   }
 
   actor_system_join(first_actor);
+  for (int i = 0; i < k; i++) {
+    free(matrix_transpose[i]);
+    free(time_transpose[i]);
+  }
+  free(matrix_transpose);
+  free(time_transpose);
+  free(prompts);
 }
