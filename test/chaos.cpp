@@ -67,8 +67,10 @@ int main() {
     rx_msgs = 0;
 
     int ret = actor_system_create(&initial, &r1);
+    printf("initial: %d\n", ret);
     if (ret < 0)
       abort();
+    printf("JOINING!\n");
     actor_system_join(initial);
 
     printf("-> Complete! Max actor id: %li\n", max_actor_id.load());

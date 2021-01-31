@@ -24,7 +24,6 @@ int actor_system_init(actor_system_t* actor_system) {
   }
 
   actor_system->alive = 0;
-  actor_system->finished = false;
 
   return 0;
 }
@@ -47,16 +46,19 @@ void actor_system_destroy(actor_system_t* actor_system) {
 
 actor_t* actor_system_find(actor_system_t* a_system, actor_id_t id) {
   if (pthread_mutex_lock(&(a_system->lock)) != 0) {
-    return NULL;
+    syserr("mutex lock 1");
   }
 
   if ((unsigned long)id >= a_system->actors->length) {
+    if (pthread_mutex_unlock(&(a_system->lock)) != 0) {
+      syserr("mutex unlock");
+    }
     return NULL;
   }
   actor_t* ret = a_system->actors->data_array[id];
 
   if (pthread_mutex_unlock(&(a_system->lock)) != 0) {
-    return NULL;
+    syserr("mutex unlock");
   }
   return ret;
 }
@@ -72,7 +74,6 @@ int actor_system_insert(actor_system_t* a_system, actor_t* actor) {
 
   actor->id = a_system->actors->length - 1;
   int ret = actor->id;
-
   if (pthread_mutex_unlock(&(a_system->lock)) != 0) {
     return -1;
   }

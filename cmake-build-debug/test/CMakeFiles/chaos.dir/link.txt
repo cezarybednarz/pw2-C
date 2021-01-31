@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/chaos.dir/chaos.cpp.o  -o chaos  ../libcacti.a 
+/usr/bin/c++  -g -Wall -Wextra -pthread -g  -rdynamic CMakeFiles/chaos.dir/chaos.cpp.o  -o chaos  ../libcacti.a 

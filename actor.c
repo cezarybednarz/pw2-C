@@ -11,6 +11,11 @@ int actor_init(actor_t* actor, thread_pool_t* pool, role_t *role, actor_system_t
     return -1;
   }
 
+  if (pthread_mutex_init(&(actor->dead_lock), NULL) != 0) {
+    fprintf(stderr, "pthread_mutex_init actor->dead_lock\n");
+    return -1;
+  }
+
   actor->message_queue = new_queue(1024, ACTOR_QUEUE_LIMIT);
   if (actor->message_queue == NULL) {
     fprintf(stderr, "new_queue\n");
@@ -31,6 +36,11 @@ void actor_destroy(actor_t* actor) {
   if (pthread_mutex_destroy(&(actor->lock)) != 0) {
     syserr("pthread_mutex_destoy");
   }
+
+  if (pthread_mutex_destroy(&(actor->dead_lock)) != 0) {
+    syserr("pthread_mutex_destoy");
+  }
+
   queue_destroy(actor->message_queue);
   free(actor);
 }
@@ -38,10 +48,13 @@ void actor_destroy(actor_t* actor) {
 // push message to queue and schedule actor
 int actor_push_message(actor_t* actor, message_t* message) {
   if (pthread_mutex_lock(&(actor->lock)) != 0) {
-    return -1;
+    syserr("mutex lock 4");
   }
 
   if (queue_push(actor->message_queue, message) != 0) {
+    if (pthread_mutex_unlock(&(actor->lock)) != 0) {
+      syserr("mutex unlock");
+    }
     return -1;
   }
 
@@ -72,24 +85,16 @@ void handle_spawn(actor_t* actor, message_t* message) {
 
   actor_system_insert(actor->a_system, new_actor);
 
-  message_t* hello_message = (message_t*)malloc(sizeof(message_t));
-  if (hello_message == NULL) {
-    return;
-  }
-  hello_message->message_type = MSG_HELLO;
-  hello_message->data = (actor_id_t*)&actor->id;
-  hello_message->nbytes = sizeof(actor_id_t);
-  if (actor_push_message(new_actor, hello_message) != 0) {
-    return;
-  }
+  message_t hello_message = {
+    .message_type = MSG_HELLO,
+    .data = (actor_id_t*)&actor->id,
+    .nbytes = sizeof(actor_id_t*)
+  };
+  send_message(new_actor->id, hello_message);
 }
 
 void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
-
-  if (actor->dead) {
-    syserr("handle_godie: double godie on same actor");
-  }
-  actor->dead = true;
+  actor_set_dead(actor, true);
 
   if (pthread_mutex_lock(&(actor->a_system->lock)) != 0) {
     syserr("pthread_mutex_lock");
@@ -106,7 +111,7 @@ void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
   }
 
   if (pthread_mutex_unlock(&(actor->a_system->lock)) != 0) {
-    syserr("pthread_mutex_lock");
+    syserr("pthread_mutex_unlock");
     return;
   }
 
@@ -120,7 +125,7 @@ void handle_hello(actor_t* actor, message_t* message) {
 void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz) {
 
   if (pthread_mutex_lock(&(actor->lock)) != 0) {
-    syserr("mutex lock");
+    syserr("mutex lock 3");
     return;
   }
 
@@ -137,8 +142,8 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
     return;
   }
 
-  if(actor->dead) {
-    printf("actor_process_image: actor %lu is already dead, skipping\n", actor->id);
+  if(actor_is_dead(actor)) {
+    fprintf(stderr,"actor_process_image: actor %lu is already dead, skipping\n", actor->id);
     free(message);
     return;
   }
@@ -184,6 +189,32 @@ void actor_process_message(actor_t* actor, __attribute__((unused)) size_t argsz)
   if (pthread_mutex_unlock(&(actor->lock)) != 0) {
     syserr("mutex unlock");
     return;
+  }
+}
+
+bool actor_is_dead(actor_t* actor) {
+  if (pthread_mutex_lock(&(actor->dead_lock)) != 0) {
+    syserr("mutex lock  2");
+    return true;
+  }
+  bool ret = actor->dead;
+  if (pthread_mutex_unlock(&(actor->dead_lock)) != 0) {
+    syserr("mutex unlock");
+    return true;
+  }
+  return ret;
+}
+
+void actor_set_dead(actor_t* actor, bool value) {
+  if (pthread_mutex_lock(&(actor->dead_lock)) != 0) {
+    syserr("mutex lock 5");
+  }
+  if (value && actor->dead) {
+    syserr("cannot kill actor twice");
+  }
+  actor->dead = value;
+  if (pthread_mutex_unlock(&(actor->dead_lock)) != 0) {
+    syserr("mutex unlock 6");
   }
 }
 

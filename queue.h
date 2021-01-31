@@ -1,5 +1,5 @@
-#ifndef DEFER_QUEUE_H
-#define DEFER_QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include <pthread.h>
 #include <semaphore.h>
@@ -31,4 +31,4 @@ void *queue_pop(queue_t *q);
 void queue_destroy(queue_t *q);
 
 
-#endif //DEFER_QUEUE_H
+#endif //QUEUE_H

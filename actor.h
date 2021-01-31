@@ -22,6 +22,8 @@ typedef struct actor
 
   queue_t* message_queue;
   bool scheduled;
+
+  pthread_mutex_t dead_lock;
   bool dead;
 } actor_t;
 
@@ -32,6 +34,10 @@ void actor_destroy(actor_t* actor);
 void actor_process_message(actor_t* actor, size_t argsz);
 
 int actor_push_message(actor_t* actor, message_t* message);
+
+bool actor_is_dead(actor_t* actor);
+
+void actor_set_dead(actor_t* actor, bool value);
 
 
 #endif // ACTOR_H

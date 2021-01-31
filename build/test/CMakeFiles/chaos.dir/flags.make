@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/cezary/Studia/PW/pw2-C/test/..
 
-CXX_FLAGS = 
+CXX_FLAGS = -g -Wall -Wextra -pthread
 

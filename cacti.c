@@ -52,8 +52,6 @@ void actor_system_join(actor_id_t actor) {
     return;
   }
 
-  a_system.finished = true;
-
   if (pthread_mutex_lock(&(a_system.lock)) != 0) {
     syserr("pthread_mutex_lock");
     return;
@@ -74,10 +72,18 @@ void actor_system_join(actor_id_t actor) {
 
 int send_message(actor_id_t actor_id, message_t message) {
   actor_t* actor = actor_system_find(&a_system, actor_id);
-  
+
+  if (rand() % 300000 == 1)
+    printf("send_message: from actor %lu message = %lu actor_id = %lu\n", actor_id_self(), message.message_type, actor_id);
+
   // no actor with that id in system
   if (actor == NULL) {
     return -2; 
+  }
+
+
+  if (actor_is_dead(actor)) {
+    return -1;
   }
 
   message_t* message_copy = malloc(sizeof(message_t));
@@ -86,7 +92,8 @@ int send_message(actor_id_t actor_id, message_t message) {
   message_copy->nbytes = message.nbytes;
 
   if (actor_push_message(actor, message_copy) != 0) {
-    return -1;
+    fprintf(stderr, "send_message: error while pushing message, queue full\n");
+    return -3;
   }
 
   return 0;
