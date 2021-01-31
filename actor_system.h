@@ -14,7 +14,7 @@ typedef struct actor_system
   int alive;
   thread_pool_t* pool;
   queue_t* actors;
-  
+
   pthread_cond_t finished_cond;
 } actor_system_t;
 

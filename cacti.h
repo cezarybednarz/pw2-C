@@ -17,7 +17,8 @@ typedef long message_type_t;
 #endif
 
 #ifndef CAST_LIMIT
-#define CAST_LIMIT 1048576
+//#define CAST_LIMIT 1048576
+#define CAST_LIMIT 100
 #endif
 
 #ifndef POOL_SIZE

@@ -73,12 +73,14 @@ int actor_system_insert(actor_system_t* a_system, actor_t* actor) {
   }
 
   actor->id = a_system->actors->length - 1;
+
+  a_system->alive++;
+
   int ret = actor->id;
   if (pthread_mutex_unlock(&(a_system->lock)) != 0) {
     return -1;
   }
 
-  a_system->alive++;
 
   return ret;
 }
