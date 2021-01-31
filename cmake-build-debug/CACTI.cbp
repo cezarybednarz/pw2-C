@@ -512,9 +512,6 @@
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/cacti.h">
 			<Option target="cacti"/>
 		</Unit>
-		<Unit filename="/home/cezary/Studia/PW/pw2-C/chaos.cpp">
-			<Option target="chaos"/>
-		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/err.c">
 			<Option target="cacti"/>
 		</Unit>
@@ -535,6 +532,9 @@
 		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/test/actorSystem_test.c">
 			<Option target="actorSystem_test"/>
+		</Unit>
+		<Unit filename="/home/cezary/Studia/PW/pw2-C/test/chaos.cpp">
+			<Option target="chaos"/>
 		</Unit>
 		<Unit filename="/home/cezary/Studia/PW/pw2-C/test/gen_matrix.c">
 			<Option target="gen_matrix"/>

@@ -76,27 +76,27 @@ include CMakeFiles/chaos.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/chaos.dir/flags.make
 
-CMakeFiles/chaos.dir/chaos.cpp.o: CMakeFiles/chaos.dir/flags.make
-CMakeFiles/chaos.dir/chaos.cpp.o: ../chaos.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chaos.dir/chaos.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/chaos.dir/chaos.cpp.o -c /home/cezary/Studia/PW/pw2-C/chaos.cpp
+CMakeFiles/chaos.dir/test/chaos.cpp.o: CMakeFiles/chaos.dir/flags.make
+CMakeFiles/chaos.dir/test/chaos.cpp.o: ../test/chaos.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cezary/Studia/PW/pw2-C/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chaos.dir/test/chaos.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/chaos.dir/test/chaos.cpp.o -c /home/cezary/Studia/PW/pw2-C/test/chaos.cpp
 
-CMakeFiles/chaos.dir/chaos.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chaos.dir/chaos.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cezary/Studia/PW/pw2-C/chaos.cpp > CMakeFiles/chaos.dir/chaos.cpp.i
+CMakeFiles/chaos.dir/test/chaos.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chaos.dir/test/chaos.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cezary/Studia/PW/pw2-C/test/chaos.cpp > CMakeFiles/chaos.dir/test/chaos.cpp.i
 
-CMakeFiles/chaos.dir/chaos.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chaos.dir/chaos.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cezary/Studia/PW/pw2-C/chaos.cpp -o CMakeFiles/chaos.dir/chaos.cpp.s
+CMakeFiles/chaos.dir/test/chaos.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chaos.dir/test/chaos.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cezary/Studia/PW/pw2-C/test/chaos.cpp -o CMakeFiles/chaos.dir/test/chaos.cpp.s
 
 # Object files for target chaos
 chaos_OBJECTS = \
-"CMakeFiles/chaos.dir/chaos.cpp.o"
+"CMakeFiles/chaos.dir/test/chaos.cpp.o"
 
 # External object files for target chaos
 chaos_EXTERNAL_OBJECTS =
 
-chaos: CMakeFiles/chaos.dir/chaos.cpp.o
+chaos: CMakeFiles/chaos.dir/test/chaos.cpp.o
 chaos: CMakeFiles/chaos.dir/build.make
 chaos: libcacti.a
 chaos: CMakeFiles/chaos.dir/link.txt

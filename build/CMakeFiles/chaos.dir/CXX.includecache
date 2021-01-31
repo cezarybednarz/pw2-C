@@ -26,16 +26,6 @@ actor_system.h
 actor.h
 /home/cezary/Studia/PW/pw2-C/actor.h
 
-/home/cezary/Studia/PW/pw2-C/chaos.cpp
-cstdlib
--
-atomic
--
-random
--
-cacti.h
-/home/cezary/Studia/PW/pw2-C/cacti.h
-
 /home/cezary/Studia/PW/pw2-C/err.h
 
 /home/cezary/Studia/PW/pw2-C/queue.h
@@ -59,6 +49,16 @@ err.h
 /home/cezary/Studia/PW/pw2-C/err.h
 threadpool.h
 /home/cezary/Studia/PW/pw2-C/threadpool.h
+
+/home/cezary/Studia/PW/pw2-C/test/chaos.cpp
+cstdlib
+-
+atomic
+-
+random
+-
+../cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
 
 /home/cezary/Studia/PW/pw2-C/threadpool.h
 pthread.h

@@ -19,7 +19,7 @@ endmacro()
 add_library(cacti STATIC cacti.c actor_system.c actor.c  queue.c threadpool.c err.c)
 add_executable(macierz macierz.c)
 add_executable(silnia silnia.c)
-add_executable(chaos chaos.cpp) # todo usunac
+add_executable(chaos test/chaos.cpp) # todo usunac
 add_subdirectory(test)
 
 install(TARGETS cacti DESTINATION .)

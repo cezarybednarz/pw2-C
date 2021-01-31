@@ -384,33 +384,6 @@ cacti.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/cacti.c.s
 .PHONY : cacti.c.s
 
-chaos.o: chaos.cpp.o
-
-.PHONY : chaos.o
-
-# target to build an object file
-chaos.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/chaos.cpp.o
-.PHONY : chaos.cpp.o
-
-chaos.i: chaos.cpp.i
-
-.PHONY : chaos.i
-
-# target to preprocess a source file
-chaos.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/chaos.cpp.i
-.PHONY : chaos.cpp.i
-
-chaos.s: chaos.cpp.s
-
-.PHONY : chaos.s
-
-# target to generate assembly for a file
-chaos.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/chaos.cpp.s
-.PHONY : chaos.cpp.s
-
 err.o: err.c.o
 
 .PHONY : err.o
@@ -519,6 +492,33 @@ silnia.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/silnia.c.s
 .PHONY : silnia.c.s
 
+test/chaos.o: test/chaos.cpp.o
+
+.PHONY : test/chaos.o
+
+# target to build an object file
+test/chaos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/test/chaos.cpp.o
+.PHONY : test/chaos.cpp.o
+
+test/chaos.i: test/chaos.cpp.i
+
+.PHONY : test/chaos.i
+
+# target to preprocess a source file
+test/chaos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/test/chaos.cpp.i
+.PHONY : test/chaos.cpp.i
+
+test/chaos.s: test/chaos.cpp.s
+
+.PHONY : test/chaos.s
+
+# target to generate assembly for a file
+test/chaos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/test/chaos.cpp.s
+.PHONY : test/chaos.cpp.s
+
 threadpool.o: threadpool.c.o
 
 .PHONY : threadpool.o
@@ -577,9 +577,6 @@ help:
 	@echo "... cacti.o"
 	@echo "... cacti.i"
 	@echo "... cacti.s"
-	@echo "... chaos.o"
-	@echo "... chaos.i"
-	@echo "... chaos.s"
 	@echo "... err.o"
 	@echo "... err.i"
 	@echo "... err.s"
@@ -592,6 +589,9 @@ help:
 	@echo "... silnia.o"
 	@echo "... silnia.i"
 	@echo "... silnia.s"
+	@echo "... test/chaos.o"
+	@echo "... test/chaos.i"
+	@echo "... test/chaos.s"
 	@echo "... threadpool.o"
 	@echo "... threadpool.i"
 	@echo "... threadpool.s"
