@@ -7,6 +7,5 @@ test/CMakeFiles/test_empty.dir/test_empty.c.o: ../cacti.h
 test/CMakeFiles/test_empty.dir/test_empty.c.o: ../err.h
 test/CMakeFiles/test_empty.dir/test_empty.c.o: ../queue.h
 test/CMakeFiles/test_empty.dir/test_empty.c.o: ../threadpool.h
-test/CMakeFiles/test_empty.dir/test_empty.c.o: ../test/minunit.h
 test/CMakeFiles/test_empty.dir/test_empty.c.o: ../test/test_empty.c
 

@@ -35,9 +35,9 @@ typedef struct sum_data {
 
 void matrix_hello(void **stateptr __attribute__((unused)), size_t nbytes __attribute__((unused)), void* data) {
 
-  actor_id_t* prev_actor = data;
+  actor_id_t prev_actor = (actor_id_t)data;
 
-  if (prev_actor == NULL) {
+  if (prev_actor == actor_id_self()) {
     // first actor from system
     return;
   }
@@ -54,7 +54,7 @@ void matrix_hello(void **stateptr __attribute__((unused)), size_t nbytes __attri
     .data = my_id
   };
 
-  send_message(*prev_actor, msg_hello_back);
+  send_message(prev_actor, msg_hello_back);
 }
 
 

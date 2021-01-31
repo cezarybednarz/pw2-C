@@ -88,15 +88,17 @@ install/strip/fast: preinstall/fast
 	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
@@ -109,6 +111,27 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -131,29 +154,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -188,30 +188,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named chaos
+# Target rules for targets named cacti
 
 # Build rule for target.
-chaos: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chaos
-.PHONY : chaos
+cacti: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cacti
+.PHONY : cacti
 
 # fast build rule for target.
-chaos/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/build
-.PHONY : chaos/fast
-
-#=============================================================================
-# Target rules for targets named silnia
-
-# Build rule for target.
-silnia: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 silnia
-.PHONY : silnia
-
-# fast build rule for target.
-silnia/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
-.PHONY : silnia/fast
+cacti/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/build
+.PHONY : cacti/fast
 
 #=============================================================================
 # Target rules for targets named macierz
@@ -227,43 +214,17 @@ macierz/fast:
 .PHONY : macierz/fast
 
 #=============================================================================
-# Target rules for targets named cacti
+# Target rules for targets named silnia
 
 # Build rule for target.
-cacti: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cacti
-.PHONY : cacti
+silnia: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 silnia
+.PHONY : silnia
 
 # fast build rule for target.
-cacti/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/build
-.PHONY : cacti/fast
-
-#=============================================================================
-# Target rules for targets named test_queue
-
-# Build rule for target.
-test_queue: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_queue
-.PHONY : test_queue
-
-# fast build rule for target.
-test_queue/fast:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/build
-.PHONY : test_queue/fast
-
-#=============================================================================
-# Target rules for targets named actorSystem_test
-
-# Build rule for target.
-actorSystem_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 actorSystem_test
-.PHONY : actorSystem_test
-
-# fast build rule for target.
-actorSystem_test/fast:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/build
-.PHONY : actorSystem_test/fast
+silnia/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
+.PHONY : silnia/fast
 
 #=============================================================================
 # Target rules for targets named test_empty
@@ -277,32 +238,6 @@ test_empty: cmake_check_build_system
 test_empty/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/build
 .PHONY : test_empty/fast
-
-#=============================================================================
-# Target rules for targets named gen_matrix
-
-# Build rule for target.
-gen_matrix: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_matrix
-.PHONY : gen_matrix
-
-# fast build rule for target.
-gen_matrix/fast:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/build
-.PHONY : gen_matrix/fast
-
-#=============================================================================
-# Target rules for targets named test_actor
-
-# Build rule for target.
-test_actor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_actor
-.PHONY : test_actor
-
-# fast build rule for target.
-test_actor/fast:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/build
-.PHONY : test_actor/fast
 
 actor.o: actor.c.o
 
@@ -493,33 +428,6 @@ silnia.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/silnia.c.s
 .PHONY : silnia.c.s
 
-test/chaos.o: test/chaos.cpp.o
-
-.PHONY : test/chaos.o
-
-# target to build an object file
-test/chaos.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/test/chaos.cpp.o
-.PHONY : test/chaos.cpp.o
-
-test/chaos.i: test/chaos.cpp.i
-
-.PHONY : test/chaos.i
-
-# target to preprocess a source file
-test/chaos.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/test/chaos.cpp.i
-.PHONY : test/chaos.cpp.i
-
-test/chaos.s: test/chaos.cpp.s
-
-.PHONY : test/chaos.s
-
-# target to generate assembly for a file
-test/chaos.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/test/chaos.cpp.s
-.PHONY : test/chaos.cpp.s
-
 threadpool.o: threadpool.c.o
 
 .PHONY : threadpool.o
@@ -560,15 +468,10 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... actorSystem_test"
 	@echo "... cacti"
-	@echo "... chaos"
-	@echo "... gen_matrix"
 	@echo "... macierz"
 	@echo "... silnia"
-	@echo "... test_actor"
 	@echo "... test_empty"
-	@echo "... test_queue"
 	@echo "... actor.o"
 	@echo "... actor.i"
 	@echo "... actor.s"
@@ -590,9 +493,6 @@ help:
 	@echo "... silnia.o"
 	@echo "... silnia.i"
 	@echo "... silnia.s"
-	@echo "... test/chaos.o"
-	@echo "... test/chaos.i"
-	@echo "... test/chaos.s"
 	@echo "... threadpool.o"
 	@echo "... threadpool.i"
 	@echo "... threadpool.s"

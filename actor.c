@@ -97,8 +97,8 @@ void handle_spawn(actor_t* actor, message_t* message) {
 
   message_t hello_message = {
     .message_type = MSG_HELLO,
-    .data = (actor_id_t*)&actor->id,
-    .nbytes = sizeof(actor_id_t*)
+    .data = (void*)actor->id,
+    .nbytes = sizeof(actor_id_t)
   };
   send_message(new_actor->id, hello_message);
 }

@@ -73,10 +73,9 @@ CMAKE_BINARY_DIR = /home/cezary/Studia/PW/pw2-C/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/chaos.dir/all
-all: CMakeFiles/silnia.dir/all
-all: CMakeFiles/macierz.dir/all
 all: CMakeFiles/cacti.dir/all
+all: CMakeFiles/macierz.dir/all
+all: CMakeFiles/silnia.dir/all
 all: test/all
 
 .PHONY : all
@@ -87,10 +86,9 @@ preinstall: test/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/chaos.dir/clean
-clean: CMakeFiles/silnia.dir/clean
-clean: CMakeFiles/macierz.dir/clean
 clean: CMakeFiles/cacti.dir/clean
+clean: CMakeFiles/macierz.dir/clean
+clean: CMakeFiles/silnia.dir/clean
 clean: test/clean
 
 .PHONY : clean
@@ -99,11 +97,7 @@ clean: test/clean
 # Directory level rules for directory test
 
 # Recursive "all" directory target.
-test/all: test/CMakeFiles/test_queue.dir/all
-test/all: test/CMakeFiles/actorSystem_test.dir/all
 test/all: test/CMakeFiles/test_empty.dir/all
-test/all: test/CMakeFiles/gen_matrix.dir/all
-test/all: test/CMakeFiles/test_actor.dir/all
 
 .PHONY : test/all
 
@@ -113,94 +107,9 @@ test/preinstall:
 .PHONY : test/preinstall
 
 # Recursive "clean" directory target.
-test/clean: test/CMakeFiles/test_queue.dir/clean
-test/clean: test/CMakeFiles/actorSystem_test.dir/clean
 test/clean: test/CMakeFiles/test_empty.dir/clean
-test/clean: test/CMakeFiles/gen_matrix.dir/clean
-test/clean: test/CMakeFiles/test_actor.dir/clean
 
 .PHONY : test/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/chaos.dir
-
-# All Build rule for target.
-CMakeFiles/chaos.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=10,11 "Built target chaos"
-.PHONY : CMakeFiles/chaos.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/chaos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/chaos.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/chaos.dir/rule
-
-# Convenience name for target.
-chaos: CMakeFiles/chaos.dir/rule
-
-.PHONY : chaos
-
-# clean rule for target.
-CMakeFiles/chaos.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/clean
-.PHONY : CMakeFiles/chaos.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/silnia.dir
-
-# All Build rule for target.
-CMakeFiles/silnia.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=16,17 "Built target silnia"
-.PHONY : CMakeFiles/silnia.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/silnia.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/silnia.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/silnia.dir/rule
-
-# Convenience name for target.
-silnia: CMakeFiles/silnia.dir/rule
-
-.PHONY : silnia
-
-# clean rule for target.
-CMakeFiles/silnia.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/clean
-.PHONY : CMakeFiles/silnia.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/macierz.dir
-
-# All Build rule for target.
-CMakeFiles/macierz.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/macierz.dir/build.make CMakeFiles/macierz.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/macierz.dir/build.make CMakeFiles/macierz.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=14,15 "Built target macierz"
-.PHONY : CMakeFiles/macierz.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/macierz.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/macierz.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/macierz.dir/rule
-
-# Convenience name for target.
-macierz: CMakeFiles/macierz.dir/rule
-
-.PHONY : macierz
-
-# clean rule for target.
-CMakeFiles/macierz.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/macierz.dir/build.make CMakeFiles/macierz.dir/clean
-.PHONY : CMakeFiles/macierz.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/cacti.dir
@@ -209,7 +118,7 @@ CMakeFiles/macierz.dir/clean:
 CMakeFiles/cacti.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9 "Built target cacti"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target cacti"
 .PHONY : CMakeFiles/cacti.dir/all
 
 # Build rule for subdir invocation for target.
@@ -230,58 +139,58 @@ CMakeFiles/cacti.dir/clean:
 .PHONY : CMakeFiles/cacti.dir/clean
 
 #=============================================================================
-# Target rules for target test/CMakeFiles/test_queue.dir
+# Target rules for target CMakeFiles/macierz.dir
 
 # All Build rule for target.
-test/CMakeFiles/test_queue.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/depend
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=22,23 "Built target test_queue"
-.PHONY : test/CMakeFiles/test_queue.dir/all
+CMakeFiles/macierz.dir/all: CMakeFiles/cacti.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/macierz.dir/build.make CMakeFiles/macierz.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/macierz.dir/build.make CMakeFiles/macierz.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=8,9 "Built target macierz"
+.PHONY : CMakeFiles/macierz.dir/all
 
 # Build rule for subdir invocation for target.
-test/CMakeFiles/test_queue.dir/rule: cmake_check_build_system
+CMakeFiles/macierz.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_queue.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/macierz.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : test/CMakeFiles/test_queue.dir/rule
+.PHONY : CMakeFiles/macierz.dir/rule
 
 # Convenience name for target.
-test_queue: test/CMakeFiles/test_queue.dir/rule
+macierz: CMakeFiles/macierz.dir/rule
 
-.PHONY : test_queue
+.PHONY : macierz
 
 # clean rule for target.
-test/CMakeFiles/test_queue.dir/clean:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/clean
-.PHONY : test/CMakeFiles/test_queue.dir/clean
+CMakeFiles/macierz.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/macierz.dir/build.make CMakeFiles/macierz.dir/clean
+.PHONY : CMakeFiles/macierz.dir/clean
 
 #=============================================================================
-# Target rules for target test/CMakeFiles/actorSystem_test.dir
+# Target rules for target CMakeFiles/silnia.dir
 
 # All Build rule for target.
-test/CMakeFiles/actorSystem_test.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/depend
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target actorSystem_test"
-.PHONY : test/CMakeFiles/actorSystem_test.dir/all
+CMakeFiles/silnia.dir/all: CMakeFiles/cacti.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=10,11 "Built target silnia"
+.PHONY : CMakeFiles/silnia.dir/all
 
 # Build rule for subdir invocation for target.
-test/CMakeFiles/actorSystem_test.dir/rule: cmake_check_build_system
+CMakeFiles/silnia.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/actorSystem_test.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/silnia.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : test/CMakeFiles/actorSystem_test.dir/rule
+.PHONY : CMakeFiles/silnia.dir/rule
 
 # Convenience name for target.
-actorSystem_test: test/CMakeFiles/actorSystem_test.dir/rule
+silnia: CMakeFiles/silnia.dir/rule
 
-.PHONY : actorSystem_test
+.PHONY : silnia
 
 # clean rule for target.
-test/CMakeFiles/actorSystem_test.dir/clean:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/clean
-.PHONY : test/CMakeFiles/actorSystem_test.dir/clean
+CMakeFiles/silnia.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/silnia.dir/build.make CMakeFiles/silnia.dir/clean
+.PHONY : CMakeFiles/silnia.dir/clean
 
 #=============================================================================
 # Target rules for target test/CMakeFiles/test_empty.dir
@@ -290,7 +199,7 @@ test/CMakeFiles/actorSystem_test.dir/clean:
 test/CMakeFiles/test_empty.dir/all: CMakeFiles/cacti.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=20,21 "Built target test_empty"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=12,13 "Built target test_empty"
 .PHONY : test/CMakeFiles/test_empty.dir/all
 
 # Build rule for subdir invocation for target.
@@ -309,60 +218,6 @@ test_empty: test/CMakeFiles/test_empty.dir/rule
 test/CMakeFiles/test_empty.dir/clean:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/clean
 .PHONY : test/CMakeFiles/test_empty.dir/clean
-
-#=============================================================================
-# Target rules for target test/CMakeFiles/gen_matrix.dir
-
-# All Build rule for target.
-test/CMakeFiles/gen_matrix.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/depend
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=12,13 "Built target gen_matrix"
-.PHONY : test/CMakeFiles/gen_matrix.dir/all
-
-# Build rule for subdir invocation for target.
-test/CMakeFiles/gen_matrix.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/gen_matrix.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : test/CMakeFiles/gen_matrix.dir/rule
-
-# Convenience name for target.
-gen_matrix: test/CMakeFiles/gen_matrix.dir/rule
-
-.PHONY : gen_matrix
-
-# clean rule for target.
-test/CMakeFiles/gen_matrix.dir/clean:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/clean
-.PHONY : test/CMakeFiles/gen_matrix.dir/clean
-
-#=============================================================================
-# Target rules for target test/CMakeFiles/test_actor.dir
-
-# All Build rule for target.
-test/CMakeFiles/test_actor.dir/all: CMakeFiles/cacti.dir/all
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/depend
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles --progress-num=18,19 "Built target test_actor"
-.PHONY : test/CMakeFiles/test_actor.dir/all
-
-# Build rule for subdir invocation for target.
-test/CMakeFiles/test_actor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_actor.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cezary/Studia/PW/pw2-C/cmake-build-debug/CMakeFiles 0
-.PHONY : test/CMakeFiles/test_actor.dir/rule
-
-# Convenience name for target.
-test_actor: test/CMakeFiles/test_actor.dir/rule
-
-.PHONY : test_actor
-
-# clean rule for target.
-test/CMakeFiles/test_actor.dir/clean:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/clean
-.PHONY : test/CMakeFiles/test_actor.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

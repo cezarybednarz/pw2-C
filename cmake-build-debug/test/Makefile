@@ -76,6 +76,40 @@ CMAKE_BINARY_DIR = /home/cezary/Studia/PW/pw2-C/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -87,17 +121,6 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target test
 test:
@@ -121,39 +144,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -188,36 +188,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/test_queue.dir/rule:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_queue.dir/rule
-.PHONY : test/CMakeFiles/test_queue.dir/rule
-
-# Convenience name for target.
-test_queue: test/CMakeFiles/test_queue.dir/rule
-
-.PHONY : test_queue
-
-# fast build rule for target.
-test_queue/fast:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/build
-.PHONY : test_queue/fast
-
-# Convenience name for target.
-test/CMakeFiles/actorSystem_test.dir/rule:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/actorSystem_test.dir/rule
-.PHONY : test/CMakeFiles/actorSystem_test.dir/rule
-
-# Convenience name for target.
-actorSystem_test: test/CMakeFiles/actorSystem_test.dir/rule
-
-.PHONY : actorSystem_test
-
-# fast build rule for target.
-actorSystem_test/fast:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/build
-.PHONY : actorSystem_test/fast
-
-# Convenience name for target.
 test/CMakeFiles/test_empty.dir/rule:
 	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_empty.dir/rule
 .PHONY : test/CMakeFiles/test_empty.dir/rule
@@ -231,117 +201,6 @@ test_empty: test/CMakeFiles/test_empty.dir/rule
 test_empty/fast:
 	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/build
 .PHONY : test_empty/fast
-
-# Convenience name for target.
-test/CMakeFiles/gen_matrix.dir/rule:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/gen_matrix.dir/rule
-.PHONY : test/CMakeFiles/gen_matrix.dir/rule
-
-# Convenience name for target.
-gen_matrix: test/CMakeFiles/gen_matrix.dir/rule
-
-.PHONY : gen_matrix
-
-# fast build rule for target.
-gen_matrix/fast:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/build
-.PHONY : gen_matrix/fast
-
-# Convenience name for target.
-test/CMakeFiles/test_actor.dir/rule:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_actor.dir/rule
-.PHONY : test/CMakeFiles/test_actor.dir/rule
-
-# Convenience name for target.
-test_actor: test/CMakeFiles/test_actor.dir/rule
-
-.PHONY : test_actor
-
-# fast build rule for target.
-test_actor/fast:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/build
-.PHONY : test_actor/fast
-
-actorSystem_test.o: actorSystem_test.c.o
-
-.PHONY : actorSystem_test.o
-
-# target to build an object file
-actorSystem_test.c.o:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/actorSystem_test.c.o
-.PHONY : actorSystem_test.c.o
-
-actorSystem_test.i: actorSystem_test.c.i
-
-.PHONY : actorSystem_test.i
-
-# target to preprocess a source file
-actorSystem_test.c.i:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/actorSystem_test.c.i
-.PHONY : actorSystem_test.c.i
-
-actorSystem_test.s: actorSystem_test.c.s
-
-.PHONY : actorSystem_test.s
-
-# target to generate assembly for a file
-actorSystem_test.c.s:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/actorSystem_test.c.s
-.PHONY : actorSystem_test.c.s
-
-gen_matrix.o: gen_matrix.c.o
-
-.PHONY : gen_matrix.o
-
-# target to build an object file
-gen_matrix.c.o:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.o
-.PHONY : gen_matrix.c.o
-
-gen_matrix.i: gen_matrix.c.i
-
-.PHONY : gen_matrix.i
-
-# target to preprocess a source file
-gen_matrix.c.i:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.i
-.PHONY : gen_matrix.c.i
-
-gen_matrix.s: gen_matrix.c.s
-
-.PHONY : gen_matrix.s
-
-# target to generate assembly for a file
-gen_matrix.c.s:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.s
-.PHONY : gen_matrix.c.s
-
-test_actor.o: test_actor.c.o
-
-.PHONY : test_actor.o
-
-# target to build an object file
-test_actor.c.o:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/test_actor.c.o
-.PHONY : test_actor.c.o
-
-test_actor.i: test_actor.c.i
-
-.PHONY : test_actor.i
-
-# target to preprocess a source file
-test_actor.c.i:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/test_actor.c.i
-.PHONY : test_actor.c.i
-
-test_actor.s: test_actor.c.s
-
-.PHONY : test_actor.s
-
-# target to generate assembly for a file
-test_actor.c.s:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/test_actor.c.s
-.PHONY : test_actor.c.s
 
 test_empty.o: test_empty.c.o
 
@@ -370,33 +229,6 @@ test_empty.c.s:
 	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_empty.dir/build.make test/CMakeFiles/test_empty.dir/test_empty.c.s
 .PHONY : test_empty.c.s
 
-test_queue.o: test_queue.c.o
-
-.PHONY : test_queue.o
-
-# target to build an object file
-test_queue.c.o:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/test_queue.c.o
-.PHONY : test_queue.c.o
-
-test_queue.i: test_queue.c.i
-
-.PHONY : test_queue.i
-
-# target to preprocess a source file
-test_queue.c.i:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/test_queue.c.i
-.PHONY : test_queue.c.i
-
-test_queue.s: test_queue.c.s
-
-.PHONY : test_queue.s
-
-# target to generate assembly for a file
-test_queue.c.s:
-	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_queue.dir/build.make test/CMakeFiles/test_queue.dir/test_queue.c.s
-.PHONY : test_queue.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -410,26 +242,10 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... actorSystem_test"
-	@echo "... gen_matrix"
-	@echo "... test_actor"
 	@echo "... test_empty"
-	@echo "... test_queue"
-	@echo "... actorSystem_test.o"
-	@echo "... actorSystem_test.i"
-	@echo "... actorSystem_test.s"
-	@echo "... gen_matrix.o"
-	@echo "... gen_matrix.i"
-	@echo "... gen_matrix.s"
-	@echo "... test_actor.o"
-	@echo "... test_actor.i"
-	@echo "... test_actor.s"
 	@echo "... test_empty.o"
 	@echo "... test_empty.i"
 	@echo "... test_empty.s"
-	@echo "... test_queue.o"
-	@echo "... test_queue.i"
-	@echo "... test_queue.s"
 .PHONY : help
 
 

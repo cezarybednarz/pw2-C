@@ -5,7 +5,6 @@ enable_testing()
 
 #set(CMAKE_C_STANDARD ...)
 set(CMAKE_C_FLAGS "-g -Wall -Wextra -pthread")
-set(CMAKE_CXX_FLAGS "-g -Wall -Wextra -pthread") # todo usunac
 
 # http://stackoverflow.com/questions/10555706/
 macro (add_executable _name)
@@ -19,7 +18,6 @@ endmacro()
 add_library(cacti STATIC cacti.c actor_system.c actor.c  queue.c threadpool.c err.c)
 add_executable(macierz macierz.c)
 add_executable(silnia silnia.c)
-add_executable(chaos test/chaos.cpp) # todo usunac
 add_subdirectory(test)
 
 install(TARGETS cacti DESTINATION .)
