@@ -36,6 +36,13 @@ int actor_system_create(actor_id_t *actor, role_t *const role) {
     return -1;
   }
 
+  // forum: implicit MSG_HELLO sent after actor_system_create()
+  message_t msg_hello = {
+    .message_type = MSG_HELLO,
+    .data = NULL
+  };
+  send_message(*actor,  msg_hello);
+
   return 0;
 }
 

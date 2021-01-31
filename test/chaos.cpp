@@ -25,7 +25,7 @@ static role_t r1 = {1, f1};
 
 static void do_chaos(void**, size_t, void*) {
   if (actor_id_self() == 0) {
-//        printf("[%li] do_chaos: %li\n", actor_id_self(), rx_msgs.load());
+        printf("[%li] do_chaos: %li\n", actor_id_self(), rx_msgs.load());
     if (++rx_one_times == 1000) {
       // (try to) kill all actors
       for (int i = 0; i <= max_actor_id; i++)

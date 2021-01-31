@@ -24,7 +24,7 @@ queue_t *new_queue(size_t base_capacity, size_t max_length) {
 int queue_push(queue_t *q, void *data) {
 
   if (q->max_length != 0 && q->length >= q->max_length) {
-    return 0;
+    return -1;
   }
 
   if (q->capacity == q->length) {

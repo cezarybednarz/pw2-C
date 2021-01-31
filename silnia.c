@@ -20,6 +20,12 @@ typedef struct value_data {
 
 void silnia_hello(void **stateptr __attribute__((unused)), size_t nbytes __attribute__((unused)), void* data) {
   actor_id_t* prev_actor = data;
+
+  if (prev_actor == NULL) {
+    // first actor from system
+    return;
+  }
+
   actor_id_t* my_id = malloc(sizeof(actor_id_t));
   if (my_id == NULL) {
     syserr("malloc");
