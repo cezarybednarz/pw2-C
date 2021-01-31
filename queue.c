@@ -1,7 +1,7 @@
 #include "queue.h"
 
-/* ---- queue ---- */
-queue_t *new_queue(void) {
+// max_length == 0 means there is no max length
+queue_t *new_queue(size_t base_capacity, size_t max_length) {
   queue_t *queue = (queue_t*)malloc(sizeof(queue_t));
   if (queue == NULL) {
     return NULL;
@@ -9,8 +9,10 @@ queue_t *new_queue(void) {
 
   queue->front = 0;
   queue->back = 0;
-  queue->capacity = 4;
+  queue->capacity = base_capacity;
   queue->data_array = malloc(queue->capacity * sizeof(void*));
+  queue->max_length = max_length;
+
   if (queue->data_array == NULL) {
     return NULL;
   }
@@ -20,6 +22,11 @@ queue_t *new_queue(void) {
 }
 
 int queue_push(queue_t *q, void *data) {
+
+  if (q->max_length != 0 && q->length >= q->max_length) {
+    return 0;
+  }
+
   if (q->capacity == q->length) {
     q->capacity *= 2;
 

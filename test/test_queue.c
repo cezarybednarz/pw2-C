@@ -17,7 +17,7 @@ int rr(int a, int b) {
 int main() {
 
   info_t *test = malloc(sizeof(info_t));
-  queue_t* test_q = new_queue();
+  queue_t* test_q = new_queue(16, 0);
   queue_push(test_q, test);
   info_t* out = (info_t*)queue_pop(test_q);
   out->a = 69;
@@ -34,7 +34,7 @@ int main() {
   int pocz = 0;
   int kon = 0;
 
-	queue_t* q = new_queue();	
+	queue_t* q = new_queue(16, 0);
 
 	srand(time(NULL));
 

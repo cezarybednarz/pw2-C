@@ -16,7 +16,15 @@ cacti.h
 queue.h
 /home/cezary/Studia/PW/pw2-C/queue.h
 
+/home/cezary/Studia/PW/pw2-C/actor_system.c
+actor_system.h
 /home/cezary/Studia/PW/pw2-C/actor_system.h
+
+/home/cezary/Studia/PW/pw2-C/actor_system.h
+cacti.h
+/home/cezary/Studia/PW/pw2-C/cacti.h
+
+/home/cezary/Studia/PW/pw2-C/cacti.c
 cacti.h
 /home/cezary/Studia/PW/pw2-C/cacti.h
 
@@ -31,6 +39,10 @@ actor.h
 /home/cezary/Studia/PW/pw2-C/actor.h
 
 /home/cezary/Studia/PW/pw2-C/err.h
+
+/home/cezary/Studia/PW/pw2-C/queue.c
+queue.h
+/home/cezary/Studia/PW/pw2-C/queue.h
 
 /home/cezary/Studia/PW/pw2-C/queue.h
 pthread.h
@@ -51,6 +63,10 @@ string.h
 -
 err.h
 /home/cezary/Studia/PW/pw2-C/err.h
+threadpool.h
+/home/cezary/Studia/PW/pw2-C/threadpool.h
+
+/home/cezary/Studia/PW/pw2-C/threadpool.c
 threadpool.h
 /home/cezary/Studia/PW/pw2-C/threadpool.h
 

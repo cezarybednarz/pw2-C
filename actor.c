@@ -11,7 +11,7 @@ int actor_init(actor_t* actor, thread_pool_t* pool, role_t *role, actor_system_t
     return -1;
   }
 
-  actor->message_queue = new_queue();
+  actor->message_queue = new_queue(1024, ACTOR_QUEUE_LIMIT);
   if (actor->message_queue == NULL) {
     fprintf(stderr, "new_queue\n");
     return -1;
@@ -113,7 +113,6 @@ void handle_godie(actor_t* actor, __attribute__((unused)) message_t* message) {
 }
 
 void handle_hello(actor_t* actor, message_t* message) {
-  actor_id_t* parent_id = (actor_id_t*)message->data;
   actor->role->prompts[0](&(actor->state), message->nbytes, message->data);
 }
 

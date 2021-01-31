@@ -37,7 +37,7 @@ void __attribute__((constructor)) init_signals() {
   }
 
   pthread_mutex_init(&pools_queue_mutex, NULL);
-  pools_queue = new_queue();
+  pools_queue = new_queue(16, 0);
 }
 
 
@@ -97,7 +97,7 @@ int thread_pool_init(thread_pool_t *pool, size_t num_threads) {
     return ERR;
   }
 
-  if ((pool->defer_queue = new_queue()) == NULL) {
+  if ((pool->defer_queue = new_queue(16, 0)) == NULL) {
     free(pool->threads);
     return ERR;
   }

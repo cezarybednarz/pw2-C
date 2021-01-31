@@ -19,9 +19,10 @@ typedef struct queue {
 
   size_t   length;
   size_t   capacity;
+  size_t   max_length;
 } queue_t;
 
-queue_t *new_queue(void);
+queue_t *new_queue(size_t base_capacity, size_t max_length);
 
 int queue_push(queue_t *q, void *data);
 

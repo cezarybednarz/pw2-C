@@ -7,7 +7,7 @@ int actor_system_init(actor_system_t* actor_system) {
     return -1;
   }
 
-  actor_system->actors = new_queue();
+  actor_system->actors = new_queue(16, CAST_LIMIT);
   if (actor_system->actors == NULL) {
     fprintf(stderr, "new_queue\n");
     return -1;
