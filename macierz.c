@@ -37,8 +37,6 @@ void matrix_hello(void **stateptr __attribute__((unused)), size_t nbytes __attri
 
   actor_id_t prev_actor = (actor_id_t)data;
 
-  sleep(10);
-
   if (prev_actor == actor_id_self()) {
     // first actor from system
     return;
