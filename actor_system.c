@@ -67,6 +67,7 @@ int actor_system_insert(actor_system_t* a_system, actor_t* actor) {
   if (pthread_mutex_lock(&(a_system->lock)) != 0) {
     return -1;
   }
+
   if (queue_push(a_system->actors, actor) != 0) {
     pthread_mutex_unlock(&(a_system->lock)); 
     return -1;

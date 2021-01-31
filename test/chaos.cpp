@@ -59,7 +59,7 @@ static void do_chaos(void**, size_t, void*) {
 
 int main() {
   actor_id_t initial;
-  for (long int i = 0; i < 1000000; i++) {
+  for (long int i = 0; i < 1; i++) {
     printf("Loop #%li\n", i);
 
     max_actor_id = 0;
@@ -70,7 +70,6 @@ int main() {
     printf("initial: %d\n", ret);
     if (ret < 0)
       abort();
-    printf("JOINING!\n");
     actor_system_join(initial);
 
     printf("-> Complete! Max actor id: %li\n", max_actor_id.load());

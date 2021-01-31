@@ -73,9 +73,6 @@ void actor_system_join(actor_id_t actor) {
 int send_message(actor_id_t actor_id, message_t message) {
   actor_t* actor = actor_system_find(&a_system, actor_id);
 
-  if (rand() % 300000 == 1)
-    printf("send_message: from actor %lu message = %lu actor_id = %lu\n", actor_id_self(), message.message_type, actor_id);
-
   // no actor with that id in system
   if (actor == NULL) {
     return -2; 
@@ -92,6 +89,7 @@ int send_message(actor_id_t actor_id, message_t message) {
   message_copy->nbytes = message.nbytes;
 
   if (actor_push_message(actor, message_copy) != 0) {
+    free(message_copy);
     fprintf(stderr, "send_message: error while pushing message, queue full\n");
     return -3;
   }

@@ -13,12 +13,12 @@ typedef long message_type_t;
 #define MSG_HELLO (message_type_t)0x0
 
 #ifndef ACTOR_QUEUE_LIMIT
-#define ACTOR_QUEUE_LIMIT 1024
+#define ACTOR_QUEUE_LIMIT 1000024
 #endif
 
 #ifndef CAST_LIMIT
 //#define CAST_LIMIT 1048576
-#define CAST_LIMIT 100
+#define CAST_LIMIT 10
 #endif
 
 #ifndef POOL_SIZE

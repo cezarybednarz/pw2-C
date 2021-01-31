@@ -52,6 +52,7 @@ int actor_push_message(actor_t* actor, message_t* message) {
   }
 
   if (queue_push(actor->message_queue, message) != 0) {
+    free(message);
     if (pthread_mutex_unlock(&(actor->lock)) != 0) {
       syserr("mutex unlock");
     }
@@ -69,7 +70,7 @@ int actor_push_message(actor_t* actor, message_t* message) {
   }
 
   if (pthread_mutex_unlock(&(actor->lock))) {
-    return -1;
+    syserr("mutex unlock");
   }
   return 0;
 }
@@ -83,7 +84,9 @@ void handle_spawn(actor_t* actor, message_t* message) {
     return;
   }
 
-  actor_system_insert(actor->a_system, new_actor);
+  if (actor_system_insert(actor->a_system, new_actor) == -1) {
+    return;
+  }
 
   message_t hello_message = {
     .message_type = MSG_HELLO,
