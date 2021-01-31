@@ -1,1 +1,0 @@
-/usr/bin/cc -g -Wall -Wextra -pthread -g  -rdynamic CMakeFiles/test_actor.dir/test_actor.c.o  -o test_actor  ../libcacti.a 

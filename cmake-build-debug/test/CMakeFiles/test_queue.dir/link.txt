@@ -1,1 +1,0 @@
-/usr/bin/cc -g -Wall -Wextra -pthread -g  -rdynamic CMakeFiles/test_queue.dir/test_queue.c.o  -o test_queue  ../libcacti.a 
