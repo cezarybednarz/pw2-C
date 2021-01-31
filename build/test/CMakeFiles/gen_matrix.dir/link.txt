@@ -1,0 +1,1 @@
+/usr/bin/cc -g -Wall -Wextra -pthread -rdynamic CMakeFiles/gen_matrix.dir/gen_matrix.c.o -o gen_matrix  ../libcacti.a 

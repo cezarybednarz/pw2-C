@@ -76,17 +76,6 @@ CMAKE_BINARY_DIR = /home/cezary/Studia/PW/pw2-C/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -98,6 +87,17 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/var/lib/snapd/snap/clion/139/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target test
 test:
@@ -233,6 +233,21 @@ test_empty/fast:
 .PHONY : test_empty/fast
 
 # Convenience name for target.
+test/CMakeFiles/gen_matrix.dir/rule:
+	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/gen_matrix.dir/rule
+.PHONY : test/CMakeFiles/gen_matrix.dir/rule
+
+# Convenience name for target.
+gen_matrix: test/CMakeFiles/gen_matrix.dir/rule
+
+.PHONY : gen_matrix
+
+# fast build rule for target.
+gen_matrix/fast:
+	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/build
+.PHONY : gen_matrix/fast
+
+# Convenience name for target.
 test/CMakeFiles/test_actor.dir/rule:
 	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_actor.dir/rule
 .PHONY : test/CMakeFiles/test_actor.dir/rule
@@ -273,6 +288,33 @@ actorSystem_test.s: actorSystem_test.c.s
 actorSystem_test.c.s:
 	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/actorSystem_test.c.s
 .PHONY : actorSystem_test.c.s
+
+gen_matrix.o: gen_matrix.c.o
+
+.PHONY : gen_matrix.o
+
+# target to build an object file
+gen_matrix.c.o:
+	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.o
+.PHONY : gen_matrix.c.o
+
+gen_matrix.i: gen_matrix.c.i
+
+.PHONY : gen_matrix.i
+
+# target to preprocess a source file
+gen_matrix.c.i:
+	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.i
+.PHONY : gen_matrix.c.i
+
+gen_matrix.s: gen_matrix.c.s
+
+.PHONY : gen_matrix.s
+
+# target to generate assembly for a file
+gen_matrix.c.s:
+	cd /home/cezary/Studia/PW/pw2-C/cmake-build-debug && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.s
+.PHONY : gen_matrix.c.s
 
 test_actor.o: test_actor.c.o
 
@@ -369,12 +411,16 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... actorSystem_test"
+	@echo "... gen_matrix"
 	@echo "... test_actor"
 	@echo "... test_empty"
 	@echo "... test_queue"
 	@echo "... actorSystem_test.o"
 	@echo "... actorSystem_test.i"
 	@echo "... actorSystem_test.s"
+	@echo "... gen_matrix.o"
+	@echo "... gen_matrix.i"
+	@echo "... gen_matrix.s"
 	@echo "... test_actor.o"
 	@echo "... test_actor.i"
 	@echo "... test_actor.s"

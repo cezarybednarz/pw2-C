@@ -109,6 +109,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/var/lib/snapd/snap/cmake/775/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -142,17 +153,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/var/lib/snapd/snap/cmake/775/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -226,6 +226,19 @@ cacti/fast:
 .PHONY : cacti/fast
 
 #=============================================================================
+# Target rules for targets named chaos
+
+# Build rule for target.
+chaos: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chaos
+.PHONY : chaos
+
+# fast build rule for target.
+chaos/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/build
+.PHONY : chaos/fast
+
+#=============================================================================
 # Target rules for targets named actorSystem_test
 
 # Build rule for target.
@@ -276,6 +289,19 @@ test_actor: cmake_check_build_system
 test_actor/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/build
 .PHONY : test_actor/fast
+
+#=============================================================================
+# Target rules for targets named gen_matrix
+
+# Build rule for target.
+gen_matrix: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_matrix
+.PHONY : gen_matrix
+
+# fast build rule for target.
+gen_matrix/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/build
+.PHONY : gen_matrix/fast
 
 actor.o: actor.c.o
 
@@ -357,6 +383,33 @@ cacti.s: cacti.c.s
 cacti.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cacti.dir/build.make CMakeFiles/cacti.dir/cacti.c.s
 .PHONY : cacti.c.s
+
+chaos.o: chaos.cpp.o
+
+.PHONY : chaos.o
+
+# target to build an object file
+chaos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/chaos.cpp.o
+.PHONY : chaos.cpp.o
+
+chaos.i: chaos.cpp.i
+
+.PHONY : chaos.i
+
+# target to preprocess a source file
+chaos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/chaos.cpp.i
+.PHONY : chaos.cpp.i
+
+chaos.s: chaos.cpp.s
+
+.PHONY : chaos.s
+
+# target to generate assembly for a file
+chaos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chaos.dir/build.make CMakeFiles/chaos.dir/chaos.cpp.s
+.PHONY : chaos.cpp.s
 
 err.o: err.c.o
 
@@ -508,6 +561,8 @@ help:
 	@echo "... test"
 	@echo "... actorSystem_test"
 	@echo "... cacti"
+	@echo "... chaos"
+	@echo "... gen_matrix"
 	@echo "... macierz"
 	@echo "... silnia"
 	@echo "... test_actor"
@@ -522,6 +577,9 @@ help:
 	@echo "... cacti.o"
 	@echo "... cacti.i"
 	@echo "... cacti.s"
+	@echo "... chaos.o"
+	@echo "... chaos.i"
+	@echo "... chaos.s"
 	@echo "... err.o"
 	@echo "... err.i"
 	@echo "... err.s"

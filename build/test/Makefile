@@ -99,16 +99,6 @@ install/fast: preinstall/fast
 	/var/lib/snapd/snap/cmake/775/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -119,6 +109,27 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/var/lib/snapd/snap/cmake/769/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -142,17 +153,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/var/lib/snapd/snap/cmake/769/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -246,6 +246,21 @@ test_actor/fast:
 	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_actor.dir/build.make test/CMakeFiles/test_actor.dir/build
 .PHONY : test_actor/fast
 
+# Convenience name for target.
+test/CMakeFiles/gen_matrix.dir/rule:
+	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/gen_matrix.dir/rule
+.PHONY : test/CMakeFiles/gen_matrix.dir/rule
+
+# Convenience name for target.
+gen_matrix: test/CMakeFiles/gen_matrix.dir/rule
+
+.PHONY : gen_matrix
+
+# fast build rule for target.
+gen_matrix/fast:
+	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/build
+.PHONY : gen_matrix/fast
+
 actorSystem_test.o: actorSystem_test.c.o
 
 .PHONY : actorSystem_test.o
@@ -272,6 +287,33 @@ actorSystem_test.s: actorSystem_test.c.s
 actorSystem_test.c.s:
 	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/actorSystem_test.dir/build.make test/CMakeFiles/actorSystem_test.dir/actorSystem_test.c.s
 .PHONY : actorSystem_test.c.s
+
+gen_matrix.o: gen_matrix.c.o
+
+.PHONY : gen_matrix.o
+
+# target to build an object file
+gen_matrix.c.o:
+	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.o
+.PHONY : gen_matrix.c.o
+
+gen_matrix.i: gen_matrix.c.i
+
+.PHONY : gen_matrix.i
+
+# target to preprocess a source file
+gen_matrix.c.i:
+	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.i
+.PHONY : gen_matrix.c.i
+
+gen_matrix.s: gen_matrix.c.s
+
+.PHONY : gen_matrix.s
+
+# target to generate assembly for a file
+gen_matrix.c.s:
+	cd /home/cezary/Studia/PW/pw2-C/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/gen_matrix.dir/build.make test/CMakeFiles/gen_matrix.dir/gen_matrix.c.s
+.PHONY : gen_matrix.c.s
 
 test_actor.o: test_actor.c.o
 
@@ -368,12 +410,16 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... actorSystem_test"
+	@echo "... gen_matrix"
 	@echo "... test_actor"
 	@echo "... test_empty"
 	@echo "... test_queue"
 	@echo "... actorSystem_test.o"
 	@echo "... actorSystem_test.i"
 	@echo "... actorSystem_test.s"
+	@echo "... gen_matrix.o"
+	@echo "... gen_matrix.i"
+	@echo "... gen_matrix.s"
 	@echo "... test_actor.o"
 	@echo "... test_actor.i"
 	@echo "... test_actor.s"

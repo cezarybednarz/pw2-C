@@ -33,7 +33,7 @@ typedef struct sum_data {
 } sum_data_t;
 
 
-void matrix_hello(void **stateptr, size_t nbytes, void* data) {
+void matrix_hello(void **stateptr __attribute__((unused)), size_t nbytes __attribute__((unused)), void* data) {
 
   actor_id_t* prev_actor = data;
   actor_id_t* my_id = malloc(sizeof(actor_id_t));
@@ -52,7 +52,7 @@ void matrix_hello(void **stateptr, size_t nbytes, void* data) {
 }
 
 
-void matrix_hello_back(void **stateptr, size_t nbytes, void* data) {
+void matrix_hello_back(void **stateptr, size_t nbytes __attribute__((unused)), void* data) {
   actor_id_t* next_id = (actor_id_t*)data;
   local_data_t* local_data = *stateptr;
   local_data->next_actor = *next_id;
@@ -75,7 +75,7 @@ void matrix_hello_back(void **stateptr, size_t nbytes, void* data) {
 }
 
 
-void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
+void matrix_assign_values(void **stateptr, size_t nbytes __attribute__((unused)), void* data) {
   local_data_t* local_data = data;
   *stateptr = local_data;
 
@@ -114,7 +114,7 @@ void matrix_assign_values(void **stateptr, size_t nbytes, void* data) {
 }
 
 
-void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
+void matrix_sum_row(void **stateptr, size_t nbytes __attribute__((unused)), void* data) {
   sum_data_t* sum_data = data;
   local_data_t* local_data = *stateptr;
 
@@ -152,7 +152,7 @@ void matrix_sum_row(void **stateptr, size_t nbytes, void* data) {
   }
 }
 
-void matrix_kill_actor(void **stateptr, size_t nbytes, void* data) {
+void matrix_kill_actor(void **stateptr, size_t nbytes __attribute__((unused)), void* data __attribute__((unused))) {
   local_data_t* local_data = *stateptr;
 
   actor_id_t next_actor = local_data->next_actor;
