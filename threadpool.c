@@ -13,20 +13,7 @@ void __attribute__((destructor)) destroy_signals() {
 }
 
 static void termination_handler(int sig_id __attribute__((unused))) {
-  if(pthread_mutex_lock(&pools_queue_mutex) != 0) {
-    exit(ERR);
-  }
-
-  while(pools_queue->length > 0) {
-    thread_pool_t *pool = queue_pop(pools_queue);
-    thread_pool_destroy(pool);
-  }
-
-  destroy_signals();
-
-  if(pthread_mutex_unlock(&pools_queue_mutex) != 0) {
-    exit(ERR);
-  }
+  exit(0);
 }
 
 void __attribute__((constructor)) init_signals() {
