@@ -23,6 +23,10 @@ static void termination_handler(int sig_id __attribute__((unused))) {
   }
 
   destroy_signals();
+
+  if(pthread_mutex_unlock(&pools_queue_mutex) != 0) {
+    exit(ERR);
+  }
 }
 
 void __attribute__((constructor)) init_signals() {

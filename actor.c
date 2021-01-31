@@ -41,6 +41,11 @@ void actor_destroy(actor_t* actor) {
     syserr("pthread_mutex_destoy");
   }
 
+  while (actor->message_queue->length > 0) {
+    message_t* m = queue_pop(actor->message_queue);
+    free(m);
+  }
+
   queue_destroy(actor->message_queue);
   free(actor);
 }
@@ -81,10 +86,12 @@ void handle_spawn(actor_t* actor, message_t* message) {
     return;
   }
   if (actor_init(new_actor, actor->pool, message->data, actor->a_system) != 0) {
+    free(new_actor);
     return;
   }
 
   if (actor_system_insert(actor->a_system, new_actor) == -1) {
+    free(new_actor);
     return;
   }
 

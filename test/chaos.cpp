@@ -59,7 +59,7 @@ static void do_chaos(void**, size_t, void*) {
 
 int main() {
   actor_id_t initial;
-  for (long int i = 0; i < 1; i++) {
+  for (long int i = 0; i < 100; i++) {
     printf("Loop #%li\n", i);
 
     max_actor_id = 0;
